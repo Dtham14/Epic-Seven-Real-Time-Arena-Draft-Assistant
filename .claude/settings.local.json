@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python app.py:*)",
+      "Bash(pip install:*)",
+      "Bash(timeout:*)",
+      "WebFetch(domain:epic7.gg.onstove.com)",
+      "Bash(python:*)",
+      "WebSearch",
+      "WebFetch(domain:epic7.onstove.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.epic7rtastats.com)",
+      "Bash(ping:*)",
+      "Bash(findstr:*)",
+      "Bash(dir:*)",
+      "WebFetch(domain:epic7x.com)",
+      "WebFetch(domain:api.epicsevendb.com)",
+      "WebFetch(domain:e7api.onstove.com)",
+      "WebFetch(domain:epic7db.com)",
+      "WebFetch(domain:e7-optimizer-game-data.s3-accelerate.amazonaws.com)",
+      "Bash(curl:*)",
+      "Bash(echo:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd /c \"taskkill /F /PID 31956\")",
+      "Bash(cmd /c \"taskkill /F /PID 44792\")",
+      "Skill(frontend-design)",
+      "Bash(cmd /c \"taskkill /F /PID 48376 & taskkill /F /PID 54716\")",
+      "Bash(wmic process:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 54716 -Force\")"
+    ]
+  }
+}

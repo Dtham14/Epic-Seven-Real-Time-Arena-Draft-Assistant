@@ -1,0 +1,1802 @@
+[
+  {
+    "season_rank": 1,
+    "hero_code": "m0574",
+    "nickname": "sirotan5",
+    "nick_no": 148805662,
+    "world_code": "world_jpn",
+    "clan_name": "BOSS",
+    "season_tiercode": "legend",
+    "win_score": 3546,
+    "win_rate": 53.69,
+    "win_cnt": 735,
+    "lose_cnt": 634,
+    "hero_list": [
+      "c2124",
+      "c1022",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 2,
+    "hero_code": "c2127",
+    "nickname": "\u98ce\u95f4\u7409\u7483",
+    "nick_no": 138874061,
+    "world_code": "world_jpn",
+    "clan_name": "283\u30d7\u30ed\u30c0\u30af\u30b7\u30e7\u30f3",
+    "season_tiercode": "emperor",
+    "win_score": 3520,
+    "win_rate": 58.83,
+    "win_cnt": 823,
+    "lose_cnt": 576,
+    "hero_list": [
+      "c2024",
+      "c1172",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 3,
+    "hero_code": "c4042_s01",
+    "nickname": "\u306f\u306a\u3055\u304f\u3002",
+    "nick_no": 140514467,
+    "world_code": "world_jpn",
+    "clan_name": "BOSS",
+    "season_tiercode": "emperor",
+    "win_score": 3497,
+    "win_rate": 59.92,
+    "win_cnt": 438,
+    "lose_cnt": 293,
+    "hero_list": [
+      "c2103",
+      "c2089",
+      "c5128"
+    ]
+  },
+  {
+    "season_rank": 4,
+    "hero_code": "c3006",
+    "nickname": "MKRXxx",
+    "nick_no": 139484061,
+    "world_code": "world_jpn",
+    "clan_name": "BOSS",
+    "season_tiercode": "emperor",
+    "win_score": 3475,
+    "win_rate": 55.05,
+    "win_cnt": 714,
+    "lose_cnt": 583,
+    "hero_list": [
+      "c1168",
+      "c2049",
+      "c2103"
+    ]
+  },
+  {
+    "season_rank": 5,
+    "hero_code": "c2131",
+    "nickname": "\u3068\u3057\u307d\u3063\u307d",
+    "nick_no": 141607180,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3455,
+    "win_rate": 62.27,
+    "win_cnt": 241,
+    "lose_cnt": 146,
+    "hero_list": [
+      "c1117",
+      "c2049",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 6,
+    "hero_code": "c3032",
+    "nickname": "\u3055\u306a\u3060\u304f\u304a\u3093",
+    "nick_no": 139886396,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3447,
+    "win_rate": 52.03,
+    "win_cnt": 895,
+    "lose_cnt": 825,
+    "hero_list": [
+      "c2103",
+      "c1117",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 7,
+    "hero_code": "c6003",
+    "nickname": "\u6267\u884c\u5b98\u5e15\u8d1d\u5c14",
+    "nick_no": 150843150,
+    "world_code": "world_jpn",
+    "clan_name": "Tower",
+    "season_tiercode": "emperor",
+    "win_score": 3443,
+    "win_rate": 55.37,
+    "win_cnt": 799,
+    "lose_cnt": 644,
+    "hero_list": [
+      "c1172",
+      "c1168",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 8,
+    "hero_code": "c2049_s01",
+    "nickname": "\u7159\u7ba1",
+    "nick_no": 149414837,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3428,
+    "win_rate": 52.55,
+    "win_cnt": 887,
+    "lose_cnt": 801,
+    "hero_list": [
+      "c1168",
+      "c2125",
+      "c2066"
+    ]
+  },
+  {
+    "season_rank": 9,
+    "hero_code": "c1168",
+    "nickname": "\u307f\u3084818",
+    "nick_no": 228223369,
+    "world_code": "world_jpn",
+    "clan_name": "\u8ab0\u3067\u3082\u3069\u3046\u305e\uff01\uff01",
+    "season_tiercode": "emperor",
+    "win_score": 3413,
+    "win_rate": 53.21,
+    "win_cnt": 646,
+    "lose_cnt": 568,
+    "hero_list": [
+      "c2113",
+      "c2128",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 10,
+    "hero_code": "c6050",
+    "nickname": "\u306f\u3074\u3048\u308b",
+    "nick_no": 292735127,
+    "world_code": "world_jpn",
+    "clan_name": "GOLDBLACK",
+    "season_tiercode": "emperor",
+    "win_score": 3407,
+    "win_rate": 54.22,
+    "win_cnt": 379,
+    "lose_cnt": 320,
+    "hero_list": [
+      "c2049",
+      "c2113",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 11,
+    "hero_code": "c5111",
+    "nickname": "\u30c1\u30e3\u30d4",
+    "nick_no": 141573945,
+    "world_code": "world_jpn",
+    "clan_name": "\u30e9\u30d3\u30c3\u30c8\u30a4\u30f3\u30d5\u30a7\u30eb\u30ce",
+    "season_tiercode": "emperor",
+    "win_score": 3405,
+    "win_rate": 57.77,
+    "win_cnt": 316,
+    "lose_cnt": 231,
+    "hero_list": [
+      "c1168",
+      "c2066",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 12,
+    "hero_code": "c1159",
+    "nickname": "chari",
+    "nick_no": 160308760,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3405,
+    "win_rate": 56.52,
+    "win_cnt": 364,
+    "lose_cnt": 280,
+    "hero_list": [
+      "c2113",
+      "c2002",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 13,
+    "hero_code": "c2103_s01",
+    "nickname": "\u305f\u3068\u3089\u307e",
+    "nick_no": 158498260,
+    "world_code": "world_jpn",
+    "clan_name": "MultiTask",
+    "season_tiercode": "emperor",
+    "win_score": 3382,
+    "win_rate": 50.91,
+    "win_cnt": 1281,
+    "lose_cnt": 1235,
+    "hero_list": [
+      "c2103",
+      "c2066",
+      "c4123"
+    ]
+  },
+  {
+    "season_rank": 14,
+    "hero_code": "c1016_s01",
+    "nickname": "\u30dd\u30f3\u30d0\u30b7",
+    "nick_no": 142898722,
+    "world_code": "world_jpn",
+    "clan_name": "\u30b9\u30af\u6c34\u5e7c\u5a18\u30cf\u30fc\u30ec\u30e0",
+    "season_tiercode": "emperor",
+    "win_score": 3377,
+    "win_rate": 55.32,
+    "win_cnt": 338,
+    "lose_cnt": 273,
+    "hero_list": [
+      "c1143",
+      "c1168",
+      "c2049"
+    ]
+  },
+  {
+    "season_rank": 15,
+    "hero_code": "c5072",
+    "nickname": "\u3068\u308b\u3066\u3043\u30fc\u3084",
+    "nick_no": 140752761,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3363,
+    "win_rate": 56.48,
+    "win_cnt": 610,
+    "lose_cnt": 470,
+    "hero_list": [
+      "c1143",
+      "c2113",
+      "c2125"
+    ]
+  },
+  {
+    "season_rank": 16,
+    "hero_code": "c1016_s02",
+    "nickname": "\u7fd4kakeru",
+    "nick_no": 137828076,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3331,
+    "win_rate": 52.27,
+    "win_cnt": 623,
+    "lose_cnt": 569,
+    "hero_list": [
+      "c2002",
+      "c1168",
+      "c1117"
+    ]
+  },
+  {
+    "season_rank": 17,
+    "hero_code": "c1024_s01",
+    "nickname": "ORANGEX",
+    "nick_no": 145955172,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3330,
+    "win_rate": 61.97,
+    "win_cnt": 220,
+    "lose_cnt": 135,
+    "hero_list": [
+      "c2113",
+      "c2049",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 18,
+    "hero_code": "c1176",
+    "nickname": "ReaSun",
+    "nick_no": 162794788,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3319,
+    "win_rate": 50.34,
+    "win_cnt": 813,
+    "lose_cnt": 802,
+    "hero_list": [
+      "c1143",
+      "c2124",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 19,
+    "hero_code": "c1178",
+    "nickname": "\u308a\u3063\u3068\u304f",
+    "nick_no": 161270957,
+    "world_code": "world_jpn",
+    "clan_name": "Bambi",
+    "season_tiercode": "emperor",
+    "win_score": 3310,
+    "win_rate": 46.28,
+    "win_cnt": 1224,
+    "lose_cnt": 1421,
+    "hero_list": [
+      "c1168",
+      "c1133",
+      "c2103"
+    ]
+  },
+  {
+    "season_rank": 20,
+    "hero_code": "c1176",
+    "nickname": "soLaq",
+    "nick_no": 166148892,
+    "world_code": "world_jpn",
+    "clan_name": "Gladsheim",
+    "season_tiercode": "emperor",
+    "win_score": 3309,
+    "win_rate": 59.05,
+    "win_cnt": 372,
+    "lose_cnt": 258,
+    "hero_list": [
+      "c2001",
+      "c2128",
+      "c1172"
+    ]
+  },
+  {
+    "season_rank": 21,
+    "hero_code": "c6050",
+    "nickname": "ayusan",
+    "nick_no": 138683198,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3288,
+    "win_rate": 49.24,
+    "win_cnt": 745,
+    "lose_cnt": 768,
+    "hero_list": [
+      "c2124",
+      "c2103",
+      "c2001"
+    ]
+  },
+  {
+    "season_rank": 22,
+    "hero_code": "c2050_s01",
+    "nickname": "\u5e7b\u5f71\u306e\u6cf0\u59ae\u5e03\u91cc\u96c5",
+    "nick_no": 198094924,
+    "world_code": "world_jpn",
+    "clan_name": "\u6b27\u795e",
+    "season_tiercode": "emperor",
+    "win_score": 3283,
+    "win_rate": 55.08,
+    "win_cnt": 363,
+    "lose_cnt": 296,
+    "hero_list": [
+      "c1172",
+      "c2103",
+      "c2125"
+    ]
+  },
+  {
+    "season_rank": 23,
+    "hero_code": "c2066",
+    "nickname": "\u30e2\u30a4\u30e2\u30a4\u30e2\u30a4",
+    "nick_no": 141809749,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3283,
+    "win_rate": 47.48,
+    "win_cnt": 698,
+    "lose_cnt": 772,
+    "hero_list": [
+      "c2066",
+      "c1172",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 24,
+    "hero_code": "c1172",
+    "nickname": "\u306a\u3048\u3061\u30fc",
+    "nick_no": 150490069,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30fc\u30b9\u3092\u306d\u3089\u3048",
+    "season_tiercode": "emperor",
+    "win_score": 3281,
+    "win_rate": 53.35,
+    "win_cnt": 517,
+    "lose_cnt": 452,
+    "hero_list": [
+      "c2024",
+      "c1172",
+      "c1133"
+    ]
+  },
+  {
+    "season_rank": 25,
+    "hero_code": "c2046_s01",
+    "nickname": "\u68ee\u7f57\u4e07\u8c61",
+    "nick_no": 138458217,
+    "world_code": "world_jpn",
+    "clan_name": "\u6b27\u795e",
+    "season_tiercode": "emperor",
+    "win_score": 3277,
+    "win_rate": 58.12,
+    "win_cnt": 333,
+    "lose_cnt": 240,
+    "hero_list": [
+      "c2124",
+      "c2049",
+      "c2125"
+    ]
+  },
+  {
+    "season_rank": 26,
+    "hero_code": "c1083",
+    "nickname": "\u91d1\u5b88\u7a7a\u767d",
+    "nick_no": 150788004,
+    "world_code": "world_jpn",
+    "clan_name": "PointZero",
+    "season_tiercode": "emperor",
+    "win_score": 3277,
+    "win_rate": 52.01,
+    "win_cnt": 310,
+    "lose_cnt": 286,
+    "hero_list": [
+      "c2024",
+      "c1172",
+      "c1133"
+    ]
+  },
+  {
+    "season_rank": 27,
+    "hero_code": "c5001",
+    "nickname": "\u30eb\u30eb\u30fc\u30c9",
+    "nick_no": 140092757,
+    "world_code": "world_jpn",
+    "clan_name": "\u7121\u8a001",
+    "season_tiercode": "emperor",
+    "win_score": 3275,
+    "win_rate": 56.64,
+    "win_cnt": 226,
+    "lose_cnt": 173,
+    "hero_list": [
+      "c1117",
+      "c2113",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 28,
+    "hero_code": "c1178",
+    "nickname": "\u30b7\u30f3\u30b0\u30eb\u30d9\u30c3\u30c9",
+    "nick_no": 150393984,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3274,
+    "win_rate": 51.8,
+    "win_cnt": 346,
+    "lose_cnt": 322,
+    "hero_list": [
+      "c1172",
+      "c1143",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 29,
+    "hero_code": "c3064",
+    "nickname": "\u4e09\u4e0b\u9f20",
+    "nick_no": 138254391,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3272,
+    "win_rate": 55.32,
+    "win_cnt": 291,
+    "lose_cnt": 235,
+    "hero_list": [
+      "c2125",
+      "c2129",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 30,
+    "hero_code": "c1017",
+    "nickname": "Aqearl",
+    "nick_no": 148282257,
+    "world_code": "world_jpn",
+    "clan_name": "Wonderland",
+    "season_tiercode": "emperor",
+    "win_score": 3270,
+    "win_rate": 55.74,
+    "win_cnt": 272,
+    "lose_cnt": 216,
+    "hero_list": [
+      "c2124",
+      "c2103",
+      "c2066"
+    ]
+  },
+  {
+    "season_rank": 31,
+    "hero_code": "c2009_s01",
+    "nickname": "\u305b\u30fc\u304f\u3061",
+    "nick_no": 142179166,
+    "world_code": "world_jpn",
+    "clan_name": "\u306f\u30fc\u308c\u3080\u3078\u3076\u3093",
+    "season_tiercode": "emperor",
+    "win_score": 3267,
+    "win_rate": 49.8,
+    "win_cnt": 494,
+    "lose_cnt": 498,
+    "hero_list": [
+      "c2001",
+      "c1168",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 32,
+    "hero_code": "c2016",
+    "nickname": "Soshiro",
+    "nick_no": 175868997,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3263,
+    "win_rate": 50.35,
+    "win_cnt": 290,
+    "lose_cnt": 286,
+    "hero_list": [
+      "c2103",
+      "c2066",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 33,
+    "hero_code": "c6037",
+    "nickname": "\u661f\u91ce\u30eb\u30d3\u30fc",
+    "nick_no": 154593842,
+    "world_code": "world_jpn",
+    "clan_name": "\u304a\u83d3\u5b50\u306e\u9b54\u5973",
+    "season_tiercode": "emperor",
+    "win_score": 3263,
+    "win_rate": 49.63,
+    "win_cnt": 402,
+    "lose_cnt": 408,
+    "hero_list": [
+      "c1168",
+      "c1172",
+      "c1143"
+    ]
+  },
+  {
+    "season_rank": 34,
+    "hero_code": "c2103_s01",
+    "nickname": "\u30ed\u30ab\u307e\u308b",
+    "nick_no": 138936577,
+    "world_code": "world_jpn",
+    "clan_name": "TeaTimeLuv",
+    "season_tiercode": "emperor",
+    "win_score": 3262,
+    "win_rate": 57.88,
+    "win_cnt": 235,
+    "lose_cnt": 171,
+    "hero_list": [
+      "c2128",
+      "c2001",
+      "c2049"
+    ]
+  },
+  {
+    "season_rank": 35,
+    "hero_code": "c2124",
+    "nickname": "\u3068\u3073\u3046\u306a\u304e",
+    "nick_no": 141549595,
+    "world_code": "world_jpn",
+    "clan_name": "\u306f\u30fc\u308c\u3080\u3078\u3076\u3093",
+    "season_tiercode": "emperor",
+    "win_score": 3261,
+    "win_rate": 48.85,
+    "win_cnt": 639,
+    "lose_cnt": 669,
+    "hero_list": [
+      "c1153",
+      "c2103",
+      "c2106"
+    ]
+  },
+  {
+    "season_rank": 36,
+    "hero_code": "c1096",
+    "nickname": "\u30e0\u30a5\u30b3",
+    "nick_no": 143544339,
+    "world_code": "world_jpn",
+    "clan_name": "BOSS",
+    "season_tiercode": "emperor",
+    "win_score": 3259,
+    "win_rate": 55.7,
+    "win_cnt": 264,
+    "lose_cnt": 210,
+    "hero_list": [
+      "c2113",
+      "c1176",
+      "c1143"
+    ]
+  },
+  {
+    "season_rank": 37,
+    "hero_code": "c2091",
+    "nickname": "\u307e\u3093\u307e\u3093\u3058",
+    "nick_no": 150155649,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3257,
+    "win_rate": 50.76,
+    "win_cnt": 302,
+    "lose_cnt": 293,
+    "hero_list": [
+      "c1022",
+      "c1172",
+      "c2113"
+    ]
+  },
+  {
+    "season_rank": 38,
+    "hero_code": "c4158",
+    "nickname": "\u304a\u304e\u304e",
+    "nick_no": 164497988,
+    "world_code": "world_jpn",
+    "clan_name": "PointZero",
+    "season_tiercode": "emperor",
+    "win_score": 3256,
+    "win_rate": 48.19,
+    "win_cnt": 571,
+    "lose_cnt": 614,
+    "hero_list": [
+      "c2128",
+      "c4158",
+      "c2113"
+    ]
+  },
+  {
+    "season_rank": 39,
+    "hero_code": "c1003_s01",
+    "nickname": "\u300e\u3042\u304a\u3044\u300f",
+    "nick_no": 140773862,
+    "world_code": "world_jpn",
+    "clan_name": "\u3057\u308d\u307d\u3093X\u30e2\u30b0\u308c\u3093",
+    "season_tiercode": "emperor",
+    "win_score": 3256,
+    "win_rate": 47.09,
+    "win_cnt": 420,
+    "lose_cnt": 472,
+    "hero_list": [
+      "c1117",
+      "c2128",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 40,
+    "hero_code": "c2131",
+    "nickname": "\u81ea\u7531\u9a91\u58eb\u96c5\u6d1b\u8587",
+    "nick_no": 142390446,
+    "world_code": "world_jpn",
+    "clan_name": "283\u30d7\u30ed\u30c0\u30af\u30b7\u30e7\u30f3",
+    "season_tiercode": "emperor",
+    "win_score": 3255,
+    "win_rate": 61.64,
+    "win_cnt": 323,
+    "lose_cnt": 201,
+    "hero_list": [
+      "c1117",
+      "c2049",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 41,
+    "hero_code": "c1178",
+    "nickname": "\u862d\u306b\u3083",
+    "nick_no": 140943986,
+    "world_code": "world_jpn",
+    "clan_name": "\u5ea7\u5b66\u4f1a",
+    "season_tiercode": "emperor",
+    "win_score": 3255,
+    "win_rate": 53.24,
+    "win_cnt": 230,
+    "lose_cnt": 202,
+    "hero_list": [
+      "c1172",
+      "c1176",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 42,
+    "hero_code": "c2103",
+    "nickname": "epic7#mu8suu",
+    "nick_no": 220938283,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30fc\u30b9\u3092\u306d\u3089\u3048",
+    "season_tiercode": "emperor",
+    "win_score": 3254,
+    "win_rate": 53.45,
+    "win_cnt": 310,
+    "lose_cnt": 270,
+    "hero_list": [
+      "c1168",
+      "c2001",
+      "c2103"
+    ]
+  },
+  {
+    "season_rank": 43,
+    "hero_code": "c5050",
+    "nickname": "\u771f\u6731\u3063",
+    "nick_no": 142302440,
+    "world_code": "world_jpn",
+    "clan_name": "\u3082\u3075\u3082\u3075\u3060\u3093",
+    "season_tiercode": "emperor",
+    "win_score": 3254,
+    "win_rate": 51.6,
+    "win_cnt": 323,
+    "lose_cnt": 303,
+    "hero_list": [
+      "c2125",
+      "c1172",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 44,
+    "hero_code": "c2086",
+    "nickname": "8mile",
+    "nick_no": 140758458,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30fc\u30b9\u3092\u306d\u3089\u3048",
+    "season_tiercode": "emperor",
+    "win_score": 3254,
+    "win_rate": 46.78,
+    "win_cnt": 1141,
+    "lose_cnt": 1298,
+    "hero_list": [
+      "c2124",
+      "c1117",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 45,
+    "hero_code": "c2124",
+    "nickname": "Porori",
+    "nick_no": 140890911,
+    "world_code": "world_jpn",
+    "clan_name": "Gladsheim",
+    "season_tiercode": "emperor",
+    "win_score": 3253,
+    "win_rate": 52.85,
+    "win_cnt": 324,
+    "lose_cnt": 289,
+    "hero_list": [
+      "c2049",
+      "c1117",
+      "c1172"
+    ]
+  },
+  {
+    "season_rank": 46,
+    "hero_code": "c2095",
+    "nickname": "\u3057\u308d\u3063\u304f\u3059",
+    "nick_no": 151952695,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30ea\u30bc\u306e\u5712",
+    "season_tiercode": "emperor",
+    "win_score": 3253,
+    "win_rate": 52.26,
+    "win_cnt": 301,
+    "lose_cnt": 275,
+    "hero_list": [
+      "c2128",
+      "c1168",
+      "c2125"
+    ]
+  },
+  {
+    "season_rank": 47,
+    "hero_code": "m0574",
+    "nickname": "\u306a\u304alilium",
+    "nick_no": 161048704,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "emperor",
+    "win_score": 3252,
+    "win_rate": 51.42,
+    "win_cnt": 326,
+    "lose_cnt": 308,
+    "hero_list": [
+      "c2128",
+      "c1168",
+      "c1117"
+    ]
+  },
+  {
+    "season_rank": 48,
+    "hero_code": "c2111",
+    "nickname": "\u3074\u3043\u305f",
+    "nick_no": 246073806,
+    "world_code": "world_jpn",
+    "clan_name": "BOSS",
+    "season_tiercode": "emperor",
+    "win_score": 3251,
+    "win_rate": 54.35,
+    "win_cnt": 250,
+    "lose_cnt": 210,
+    "hero_list": [
+      "c2128",
+      "c2001",
+      "c2113"
+    ]
+  },
+  {
+    "season_rank": 49,
+    "hero_code": "c2066",
+    "nickname": "\ub8e8\ub098",
+    "nick_no": 140916802,
+    "world_code": "world_jpn",
+    "clan_name": "\u305b\u3076\u3093\u3059\u3075\u3049\u306b\u3080",
+    "season_tiercode": "emperor",
+    "win_score": 3251,
+    "win_rate": 49.25,
+    "win_cnt": 328,
+    "lose_cnt": 338,
+    "hero_list": [
+      "c2049",
+      "c1172",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 50,
+    "hero_code": "c5128",
+    "nickname": "\ud574\ud53c",
+    "nick_no": 144439717,
+    "world_code": "world_jpn",
+    "clan_name": "\u305b\u3076\u3093\u3059\u3075\u3049\u306b\u3080",
+    "season_tiercode": "emperor",
+    "win_score": 3251,
+    "win_rate": 49.02,
+    "win_cnt": 450,
+    "lose_cnt": 468,
+    "hero_list": [
+      "c2124",
+      "c2128",
+      "c2113"
+    ]
+  },
+  {
+    "season_rank": 51,
+    "hero_code": "c1009",
+    "nickname": "hikariy",
+    "nick_no": 191038987,
+    "world_code": "world_jpn",
+    "clan_name": "\uff45\uff54\uff45\uff52\uff4e\uff49\uff54\uff59",
+    "season_tiercode": "emperor",
+    "win_score": 3250,
+    "win_rate": 54.21,
+    "win_cnt": 264,
+    "lose_cnt": 223,
+    "hero_list": [
+      "c1168",
+      "c2128",
+      "c2049"
+    ]
+  },
+  {
+    "season_rank": 52,
+    "hero_code": "c2103_s01",
+    "nickname": "\u7f6a\u60e1\u738b\u51a0",
+    "nick_no": 141948154,
+    "world_code": "world_jpn",
+    "clan_name": "283\u30d7\u30ed\u30c0\u30af\u30b7\u30e7\u30f3",
+    "season_tiercode": "emperor",
+    "win_score": 3250,
+    "win_rate": 50.78,
+    "win_cnt": 458,
+    "lose_cnt": 444,
+    "hero_list": [
+      "c1133",
+      "c2128",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 53,
+    "hero_code": "c3123",
+    "nickname": "\u30b3\u30b9\u30e2\u30ca\u30ac\u30aa",
+    "nick_no": 200949391,
+    "world_code": "world_jpn",
+    "clan_name": "\u30ce\u30f4\u30a1\u30fc\u30ea\u30b9",
+    "season_tiercode": "emperor",
+    "win_score": 3250,
+    "win_rate": 49.4,
+    "win_cnt": 497,
+    "lose_cnt": 509,
+    "hero_list": [
+      "c2124",
+      "c2128",
+      "c1117"
+    ]
+  },
+  {
+    "season_rank": 54,
+    "hero_code": "c2095",
+    "nickname": "I\u5f0fI",
+    "nick_no": 162878743,
+    "world_code": "world_jpn",
+    "clan_name": "prologue",
+    "season_tiercode": "emperor",
+    "win_score": 3248,
+    "win_rate": 53.77,
+    "win_cnt": 228,
+    "lose_cnt": 196,
+    "hero_list": [
+      "c2066",
+      "c2128",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 55,
+    "hero_code": "c1178",
+    "nickname": "koko74",
+    "nick_no": 170936180,
+    "world_code": "world_jpn",
+    "clan_name": "MultiTask",
+    "season_tiercode": "emperor",
+    "win_score": 3248,
+    "win_rate": 48.96,
+    "win_cnt": 469,
+    "lose_cnt": 489,
+    "hero_list": [
+      "c1143",
+      "c1117",
+      "c5111"
+    ]
+  },
+  {
+    "season_rank": 56,
+    "hero_code": "c2102",
+    "nickname": "Nein",
+    "nick_no": 171357530,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30fc\u30b9\u3092\u306d\u3089\u3048",
+    "season_tiercode": "emperor",
+    "win_score": 3248,
+    "win_rate": 48.11,
+    "win_cnt": 587,
+    "lose_cnt": 633,
+    "hero_list": [
+      "c1168",
+      "c2128",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 57,
+    "hero_code": "c2019_s01",
+    "nickname": "\u307b\u30800515",
+    "nick_no": 141765383,
+    "world_code": "world_jpn",
+    "clan_name": "\u30ce\u30f4\u30a1\u30fc\u30ea\u30b9",
+    "season_tiercode": "emperor",
+    "win_score": 3247,
+    "win_rate": 48.08,
+    "win_cnt": 501,
+    "lose_cnt": 541,
+    "hero_list": [
+      "c1154",
+      "c2128",
+      "c5024"
+    ]
+  },
+  {
+    "season_rank": 58,
+    "hero_code": "c1122",
+    "nickname": "\u30a8\u30bd\u30e9",
+    "nick_no": 160307400,
+    "world_code": "world_jpn",
+    "clan_name": "\u4e00\u5339\u72fc\u306e\u9928",
+    "season_tiercode": "emperor",
+    "win_score": 3247,
+    "win_rate": 46.63,
+    "win_cnt": 727,
+    "lose_cnt": 832,
+    "hero_list": [
+      "c2002",
+      "c1176",
+      "c2001"
+    ]
+  },
+  {
+    "season_rank": 59,
+    "hero_code": "c1009",
+    "nickname": "\u305f\u307e\u304a7",
+    "nick_no": 140792524,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30fc\u30b9\u3092\u306d\u3089\u3048",
+    "season_tiercode": "emperor",
+    "win_score": 3245,
+    "win_rate": 50.06,
+    "win_cnt": 437,
+    "lose_cnt": 436,
+    "hero_list": [
+      "c2124",
+      "c2113",
+      "c2002"
+    ]
+  },
+  {
+    "season_rank": 60,
+    "hero_code": "c5128",
+    "nickname": "acolyte",
+    "nick_no": 246322375,
+    "world_code": "world_jpn",
+    "clan_name": "Gladsheim",
+    "season_tiercode": "emperor",
+    "win_score": 3245,
+    "win_rate": 50.0,
+    "win_cnt": 319,
+    "lose_cnt": 319,
+    "hero_list": [
+      "c1176",
+      "c1172",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 61,
+    "hero_code": "c1172",
+    "nickname": "redo",
+    "nick_no": 349525566,
+    "world_code": "world_jpn",
+    "clan_name": "EpiCuervo",
+    "season_tiercode": "warlord",
+    "win_score": 3242,
+    "win_rate": 45.74,
+    "win_cnt": 612,
+    "lose_cnt": 726,
+    "hero_list": [
+      "c2001",
+      "c2124",
+      "c2049"
+    ]
+  },
+  {
+    "season_rank": 62,
+    "hero_code": "c5050",
+    "nickname": "\u30e9\u30a6\u30e92",
+    "nick_no": 347717864,
+    "world_code": "world_jpn",
+    "clan_name": "\u30ce\u30f4\u30a1\u30fc\u30ea\u30b9",
+    "season_tiercode": "warlord",
+    "win_score": 3236,
+    "win_rate": 48.43,
+    "win_cnt": 569,
+    "lose_cnt": 606,
+    "hero_list": [
+      "c2128",
+      "c5111",
+      "c2001"
+    ]
+  },
+  {
+    "season_rank": 63,
+    "hero_code": "c2132",
+    "nickname": "\u3057\u3087\u306a\u304b",
+    "nick_no": 282332433,
+    "world_code": "world_jpn",
+    "clan_name": "\u8f2a\u5b9d\u56e3",
+    "season_tiercode": "warlord",
+    "win_score": 3234,
+    "win_rate": 48.2,
+    "win_cnt": 482,
+    "lose_cnt": 518,
+    "hero_list": [
+      "c2128",
+      "c1176",
+      "c2079"
+    ]
+  },
+  {
+    "season_rank": 64,
+    "hero_code": "c1047",
+    "nickname": "kimito",
+    "nick_no": 141196821,
+    "world_code": "world_jpn",
+    "clan_name": "EpiCuervo",
+    "season_tiercode": "warlord",
+    "win_score": 3233,
+    "win_rate": 50.3,
+    "win_cnt": 331,
+    "lose_cnt": 327,
+    "hero_list": [
+      "c1172",
+      "c2049",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 65,
+    "hero_code": "c2062_s01",
+    "nickname": "\u30ad\u30a3\uff1a",
+    "nick_no": 139252199,
+    "world_code": "world_jpn",
+    "clan_name": "GOLDBLACK",
+    "season_tiercode": "warlord",
+    "win_score": 3218,
+    "win_rate": 51.21,
+    "win_cnt": 528,
+    "lose_cnt": 503,
+    "hero_list": [
+      "c2049",
+      "c1172",
+      "c1117"
+    ]
+  },
+  {
+    "season_rank": 66,
+    "hero_code": "c1171",
+    "nickname": "\u30de\u30c6\u30a3\u30c3\u30af",
+    "nick_no": 318568734,
+    "world_code": "world_jpn",
+    "clan_name": "\u30ce\u30f4\u30a1\u30fc\u30ea\u30b9",
+    "season_tiercode": "warlord",
+    "win_score": 3210,
+    "win_rate": 48.6,
+    "win_cnt": 398,
+    "lose_cnt": 421,
+    "hero_list": [
+      "c2128",
+      "c1168",
+      "c2066"
+    ]
+  },
+  {
+    "season_rank": 67,
+    "hero_code": "c1105",
+    "nickname": "Rescue",
+    "nick_no": 195989039,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a8\u30fc\u30b9\u3092\u306d\u3089\u3048",
+    "season_tiercode": "warlord",
+    "win_score": 3206,
+    "win_rate": 50.28,
+    "win_cnt": 451,
+    "lose_cnt": 446,
+    "hero_list": [
+      "c1172",
+      "c1168",
+      "c2049"
+    ]
+  },
+  {
+    "season_rank": 68,
+    "hero_code": "c1088_s01",
+    "nickname": "S\u305f\u308d\u3046",
+    "nick_no": 164149699,
+    "world_code": "world_jpn",
+    "clan_name": "EpiCuervo",
+    "season_tiercode": "warlord",
+    "win_score": 3197,
+    "win_rate": 48.22,
+    "win_cnt": 353,
+    "lose_cnt": 379,
+    "hero_list": [
+      "c2113",
+      "c2128",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 69,
+    "hero_code": "c2095",
+    "nickname": "\u3056\u3069\u3045",
+    "nick_no": 153814208,
+    "world_code": "world_jpn",
+    "clan_name": "\u30ce\u30f4\u30a1\u30fc\u30ea\u30b9",
+    "season_tiercode": "warlord",
+    "win_score": 3186,
+    "win_rate": 48.47,
+    "win_cnt": 712,
+    "lose_cnt": 757,
+    "hero_list": [
+      "c2128",
+      "c2001",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 70,
+    "hero_code": "c4012",
+    "nickname": "\u304b\u3057\u307b\u304d",
+    "nick_no": 252012983,
+    "world_code": "world_jpn",
+    "clan_name": "\u96ea\u666f\u8272",
+    "season_tiercode": "emperor",
+    "win_score": 3181,
+    "win_rate": 48.72,
+    "win_cnt": 840,
+    "lose_cnt": 884,
+    "hero_list": [
+      "c1117",
+      "c2002",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 71,
+    "hero_code": "c2128",
+    "nickname": "brainbox",
+    "nick_no": 201181581,
+    "world_code": "world_jpn",
+    "clan_name": "PointZero",
+    "season_tiercode": "warlord",
+    "win_score": 3175,
+    "win_rate": 50.0,
+    "win_cnt": 233,
+    "lose_cnt": 233,
+    "hero_list": [
+      "c2113",
+      "c2001",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 72,
+    "hero_code": "c1178",
+    "nickname": "\u9e7f\u4e43\u3070\u3093\u3073",
+    "nick_no": 140784498,
+    "world_code": "world_jpn",
+    "clan_name": "Bambi",
+    "season_tiercode": "warlord",
+    "win_score": 3172,
+    "win_rate": 47.59,
+    "win_cnt": 841,
+    "lose_cnt": 926,
+    "hero_list": [
+      "c1143",
+      "c1168",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 73,
+    "hero_code": "c1105",
+    "nickname": "mabomabo",
+    "nick_no": 176421956,
+    "world_code": "world_jpn",
+    "clan_name": "MultiTask",
+    "season_tiercode": "warlord",
+    "win_score": 3157,
+    "win_rate": 54.26,
+    "win_cnt": 223,
+    "lose_cnt": 188,
+    "hero_list": [
+      "c2024",
+      "c2047",
+      "c1172"
+    ]
+  },
+  {
+    "season_rank": 74,
+    "hero_code": "c1152",
+    "nickname": "\u3055\u3068\u308b\u3093\u308b\u3093",
+    "nick_no": 139392591,
+    "world_code": "world_jpn",
+    "clan_name": "prologue",
+    "season_tiercode": "warlord",
+    "win_score": 3148,
+    "win_rate": 52.3,
+    "win_cnt": 273,
+    "lose_cnt": 249,
+    "hero_list": [
+      "c2128",
+      "c1168",
+      "c1133"
+    ]
+  },
+  {
+    "season_rank": 75,
+    "hero_code": "c1176",
+    "nickname": "\u6885\u5e72\u3057",
+    "nick_no": 139118555,
+    "world_code": "world_jpn",
+    "clan_name": "\u306f\u30fc\u308c\u3080\u3078\u3076\u3093",
+    "season_tiercode": "warlord",
+    "win_score": 3127,
+    "win_rate": 46.99,
+    "win_cnt": 413,
+    "lose_cnt": 466,
+    "hero_list": [
+      "c2128",
+      "c1168",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 76,
+    "hero_code": "c2082",
+    "nickname": "\u30af\u30e9\u30a6\u30f3\u30a8\u30fc\u30c6\u30eb",
+    "nick_no": 202775087,
+    "world_code": "world_jpn",
+    "clan_name": "\u30b9\u30af\u6c34\u5e7c\u5a18\u30cf\u30fc\u30ec\u30e0",
+    "season_tiercode": "warlord",
+    "win_score": 3116,
+    "win_rate": 54.9,
+    "win_cnt": 185,
+    "lose_cnt": 152,
+    "hero_list": [
+      "c2082",
+      "c6050",
+      "c2103"
+    ]
+  },
+  {
+    "season_rank": 77,
+    "hero_code": "c1159",
+    "nickname": "\u591c\u5929\u306e\u738b\u30cf\u30e4\u30c6",
+    "nick_no": 155573851,
+    "world_code": "world_jpn",
+    "clan_name": "\u306f\u30fc\u308c\u3080\u3078\u3076\u3093",
+    "season_tiercode": "warlord",
+    "win_score": 3112,
+    "win_rate": 49.66,
+    "win_cnt": 292,
+    "lose_cnt": 296,
+    "hero_list": [
+      "c2124",
+      "c2049",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 78,
+    "hero_code": "c1016_s02",
+    "nickname": "\u98a8\u898b",
+    "nick_no": 140502733,
+    "world_code": "world_jpn",
+    "clan_name": "Gladsheim",
+    "season_tiercode": "warlord",
+    "win_score": 3101,
+    "win_rate": 50.7,
+    "win_cnt": 218,
+    "lose_cnt": 212,
+    "hero_list": [
+      "c2072",
+      "c1168",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 79,
+    "hero_code": "c2126",
+    "nickname": "\u5149\u982d",
+    "nick_no": 138705190,
+    "world_code": "world_jpn",
+    "clan_name": "\u30d7\u30ea\u30a6\u30b9\u56de\u907f\u3057\u968a",
+    "season_tiercode": "warlord",
+    "win_score": 3098,
+    "win_rate": 49.65,
+    "win_cnt": 283,
+    "lose_cnt": 287,
+    "hero_list": [
+      "c1172",
+      "c1143",
+      "c6050"
+    ]
+  },
+  {
+    "season_rank": 80,
+    "hero_code": "c0002",
+    "nickname": "LK123",
+    "nick_no": 313148653,
+    "world_code": "world_jpn",
+    "clan_name": "\u30f4\u30a7\u30b9\u30bf\u306e\u706b",
+    "season_tiercode": "warlord",
+    "win_score": 3094,
+    "win_rate": 46.04,
+    "win_cnt": 448,
+    "lose_cnt": 525,
+    "hero_list": [
+      "c1163",
+      "c2024",
+      "c1172"
+    ]
+  },
+  {
+    "season_rank": 81,
+    "hero_code": "c2004",
+    "nickname": "\u3080\u3089\u3057\u3083\u3081",
+    "nick_no": 138153248,
+    "world_code": "world_jpn",
+    "clan_name": "MultiTask",
+    "season_tiercode": "warlord",
+    "win_score": 3093,
+    "win_rate": 50.54,
+    "win_cnt": 325,
+    "lose_cnt": 318,
+    "hero_list": [
+      "c2024",
+      "c1117",
+      "c1172"
+    ]
+  },
+  {
+    "season_rank": 82,
+    "hero_code": "c1138",
+    "nickname": "\u685csakura",
+    "nick_no": 145217974,
+    "world_code": "world_jpn",
+    "clan_name": "\u30b9\u30ab\u30a4\u30e9\u30d6",
+    "season_tiercode": "warlord",
+    "win_score": 3091,
+    "win_rate": 46.6,
+    "win_cnt": 452,
+    "lose_cnt": 518,
+    "hero_list": [
+      "c2124",
+      "c1168",
+      "c2103"
+    ]
+  },
+  {
+    "season_rank": 83,
+    "hero_code": "c1126",
+    "nickname": "\uff21yataka",
+    "nick_no": 139937730,
+    "world_code": "world_jpn",
+    "clan_name": "Gladsheim",
+    "season_tiercode": "warlord",
+    "win_score": 3085,
+    "win_rate": 58.97,
+    "win_cnt": 217,
+    "lose_cnt": 151,
+    "hero_list": [
+      "c2001",
+      "c2125",
+      "c2066"
+    ]
+  },
+  {
+    "season_rank": 84,
+    "hero_code": "c6065",
+    "nickname": "yugu",
+    "nick_no": 144708290,
+    "world_code": "world_jpn",
+    "clan_name": "GOLDBLACK",
+    "season_tiercode": "emperor",
+    "win_score": 3084,
+    "win_rate": 50.74,
+    "win_cnt": 514,
+    "lose_cnt": 499,
+    "hero_list": [
+      "c1172",
+      "c2124",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 85,
+    "hero_code": "c3125",
+    "nickname": "\u3067\u3059\u3075\u3047\u3076\u3089\u308a\u3043",
+    "nick_no": 169984355,
+    "world_code": "world_jpn",
+    "clan_name": "prominence",
+    "season_tiercode": "warlord",
+    "win_score": 3077,
+    "win_rate": 54.29,
+    "win_cnt": 209,
+    "lose_cnt": 176,
+    "hero_list": [
+      "c1176",
+      "c2128",
+      "c6050"
+    ]
+  },
+  {
+    "season_rank": 86,
+    "hero_code": "c6065",
+    "nickname": "\u307f\u305f\u304d\u306f\u3089",
+    "nick_no": 146858294,
+    "world_code": "world_jpn",
+    "clan_name": "\u30ce\u30f4\u30a1\u30fc\u30ea\u30b9",
+    "season_tiercode": "warlord",
+    "win_score": 3072,
+    "win_rate": 48.32,
+    "win_cnt": 432,
+    "lose_cnt": 462,
+    "hero_list": [
+      "c1143",
+      "c1172",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 87,
+    "hero_code": "m0062",
+    "nickname": "CYAKA",
+    "nick_no": 166834915,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "warlord",
+    "win_score": 3065,
+    "win_rate": 54.45,
+    "win_cnt": 208,
+    "lose_cnt": 174,
+    "hero_list": [
+      "c2128",
+      "c1172",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 88,
+    "hero_code": "c6050",
+    "nickname": "\u3066\u306d\u3076\u308a\u3083\u3041",
+    "nick_no": 138194398,
+    "world_code": "world_jpn",
+    "clan_name": null,
+    "season_tiercode": "warlord",
+    "win_score": 3056,
+    "win_rate": 49.33,
+    "win_cnt": 331,
+    "lose_cnt": 340,
+    "hero_list": [
+      "c2124",
+      "c1172",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 89,
+    "hero_code": "c5111",
+    "nickname": "Shaneorka",
+    "nick_no": 138006792,
+    "world_code": "world_jpn",
+    "clan_name": "ReVersus",
+    "season_tiercode": "warlord",
+    "win_score": 3041,
+    "win_rate": 62.34,
+    "win_cnt": 144,
+    "lose_cnt": 87,
+    "hero_list": [
+      "c1172",
+      "c2089",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 90,
+    "hero_code": "c2053",
+    "nickname": "\u3053\u3069\u304f\u306e\u3050\u308b\u3081",
+    "nick_no": 147518689,
+    "world_code": "world_jpn",
+    "clan_name": "EpiCuervo",
+    "season_tiercode": "warlord",
+    "win_score": 3040,
+    "win_rate": 55.09,
+    "win_cnt": 184,
+    "lose_cnt": 150,
+    "hero_list": [
+      "c1143",
+      "c2113",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 91,
+    "hero_code": "c2091",
+    "nickname": "kawazukku",
+    "nick_no": 170228443,
+    "world_code": "world_jpn",
+    "clan_name": "KING",
+    "season_tiercode": "warlord",
+    "win_score": 3012,
+    "win_rate": 54.37,
+    "win_cnt": 168,
+    "lose_cnt": 141,
+    "hero_list": [
+      "c1176",
+      "c2128",
+      "c2066"
+    ]
+  },
+  {
+    "season_rank": 92,
+    "hero_code": "c1178",
+    "nickname": "TokotokoTowa",
+    "nick_no": 156623850,
+    "world_code": "world_jpn",
+    "clan_name": "MultiTask",
+    "season_tiercode": "warlord",
+    "win_score": 3008,
+    "win_rate": 50.59,
+    "win_cnt": 258,
+    "lose_cnt": 252,
+    "hero_list": [
+      "c2125",
+      "c2124",
+      "c2128"
+    ]
+  },
+  {
+    "season_rank": 93,
+    "hero_code": "c2128",
+    "nickname": "\u30ab\u30cc",
+    "nick_no": 312777167,
+    "world_code": "world_jpn",
+    "clan_name": "TeaTimeLuv",
+    "season_tiercode": "warlord",
+    "win_score": 2999,
+    "win_rate": 53.33,
+    "win_cnt": 192,
+    "lose_cnt": 168,
+    "hero_list": [
+      "c2125",
+      "c2124",
+      "c2049"
+    ]
+  },
+  {
+    "season_rank": 94,
+    "hero_code": "c2033",
+    "nickname": "\u5357\u56fd",
+    "nick_no": 143085518,
+    "world_code": "world_jpn",
+    "clan_name": "\u30d6\u30e9\u30c3\u30af\u30da\u30c3\u30d1\u30fc",
+    "season_tiercode": "warlord",
+    "win_score": 2998,
+    "win_rate": 44.84,
+    "win_cnt": 622,
+    "lose_cnt": 765,
+    "hero_list": [
+      "c2066",
+      "c2079",
+      "c1168"
+    ]
+  },
+  {
+    "season_rank": 95,
+    "hero_code": "c2079",
+    "nickname": "\u306a\u3064\u304d\u3061Z",
+    "nick_no": 143820457,
+    "world_code": "world_jpn",
+    "clan_name": "\u7121\u8a001",
+    "season_tiercode": "emperor",
+    "win_score": 2994,
+    "win_rate": 71.93,
+    "win_cnt": 123,
+    "lose_cnt": 48,
+    "hero_list": [
+      "c2049",
+      "c2113",
+      "c2124"
+    ]
+  },
+  {
+    "season_rank": 96,
+    "hero_code": "c2001",
+    "nickname": "\u5f71\u6708\u6d41\u5149",
+    "nick_no": 138585646,
+    "world_code": "world_jpn",
+    "clan_name": "Tower",
+    "season_tiercode": "warlord",
+    "win_score": 2979,
+    "win_rate": 49.48,
+    "win_cnt": 379,
+    "lose_cnt": 387,
+    "hero_list": [
+      "c2001",
+      "c2089",
+      "c5175"
+    ]
+  },
+  {
+    "season_rank": 97,
+    "hero_code": "c6050",
+    "nickname": "\u30e9\u30c6\u30a3\u30e1\u30ea\u30a2",
+    "nick_no": 139022573,
+    "world_code": "world_jpn",
+    "clan_name": "\u30a2\u30eb\u30ad\u30a3\u306e\u5de3",
+    "season_tiercode": "warlord",
+    "win_score": 2974,
+    "win_rate": 54.34,
+    "win_cnt": 169,
+    "lose_cnt": 142,
+    "hero_list": [
+      "c1168",
+      "c2124",
+      "c1176"
+    ]
+  },
+  {
+    "season_rank": 98,
+    "hero_code": "c1178",
+    "nickname": "\u68a6\u7396",
+    "nick_no": 140337283,
+    "world_code": "world_jpn",
+    "clan_name": "Tower",
+    "season_tiercode": "warlord",
+    "win_score": 2970,
+    "win_rate": 51.77,
+    "win_cnt": 248,
+    "lose_cnt": 231,
+    "hero_list": [
+      "c1176",
+      "c2049",
+      "c1022"
+    ]
+  },
+  {
+    "season_rank": 99,
+    "hero_code": "c2112",
+    "nickname": "\u30ae\u30a2\u30eb\uff64",
+    "nick_no": 139883542,
+    "world_code": "world_jpn",
+    "clan_name": "\u308b\u3044\u306f\u667a\u3092\u547c\u3076",
+    "season_tiercode": "warlord",
+    "win_score": 2968,
+    "win_rate": 50.77,
+    "win_cnt": 230,
+    "lose_cnt": 223,
+    "hero_list": [
+      "c2066",
+      "c1046",
+      "c2048"
+    ]
+  },
+  {
+    "season_rank": 100,
+    "hero_code": "c2131",
+    "nickname": "NickTang",
+    "nick_no": 138006288,
+    "world_code": "world_jpn",
+    "clan_name": "\u5ea7\u5b66\u4f1a",
+    "season_tiercode": "warlord",
+    "win_score": 2968,
+    "win_rate": 47.91,
+    "win_cnt": 264,
+    "lose_cnt": 287,
+    "hero_list": [
+      "c1176",
+      "c2079",
+      "c1172"
+    ]
+  }
+]

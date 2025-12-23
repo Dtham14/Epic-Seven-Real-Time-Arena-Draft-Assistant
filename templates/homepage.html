@@ -3,239 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Seven - Draft Assistant</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>E7 Draft Assister</h1>
-    <div id="dropdowns">
-        <div class="dropdown-column">
+    <!-- Particle Background -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
 
-            {% for i in range(1, 6) %}
-                <input type="radio" id="myPost{{i}}" name="optionsMy" value="optionMy">
-                <label class="labelOp" for="optionMy">Ban</label>
-                </br></br></br></br></br>
-            {% endfor %}
-        </div>
-        <div class="dropdown-column">
-            
-                {% for i in range(1, 6) %}
-                    <img class="portraitsMy" id="myImg{{ i }}" src="">
-                {% endfor %}
+    <!-- Main Container -->
+    <div class="arena-container">
+        <!-- Header -->
+        <header class="arena-header">
+            <div class="header-ornament left"></div>
+            <h1 class="arena-title">
+                <span class="title-accent">REAL-TIME ARENA</span>
+                <span class="title-main">DRAFT ASSISTANT</span>
+            </h1>
+            <div class="header-ornament right"></div>
+        </header>
 
-        </div>
-        <div class="dropdown-column">
+        <!-- Main Arena -->
+        <div class="arena-battlefield">
+            <!-- Player Side -->
+            <div class="team-side player-side">
+                <div class="team-label">
+                    <span class="label-text">YOUR TEAM</span>
+                </div>
 
-            <div class="dropdown-menu">
-                {% for i in range(1, 6) %}
-                    <form>
-                        <select class="selectMy" id="myPick{{ i }}" name="myPick{{ i }}">
-                            <option value="">Pick {{i}} </option>
-                            {% for option in hero_list %}
-                                <option value="{{ option['code'] }}">{{ option["name"] }}</option>
-                            {% endfor %}
-                        </select>
-                    </form>
-                {% endfor %}
-            </div>
-        </div>
+                <!-- Pre-Bans -->
+                <div class="prebans-section">
+                    <h3 class="section-title">Pre-Bans</h3>
+                    <div class="prebans-grid">
+                        <div class="preban-slot">
+                            <img class="preban-portrait" id="myPrePor1" src="" alt="">
+                            <select class="hero-select preban-select" id="myPre1" name="myPre1">
+                                <option value="">Pre Ban 1</option>
+                                {% for option in hero_list %}
+                                    <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="preban-slot">
+                            <img class="preban-portrait" id="myPrePor2" src="" alt="">
+                            <select class="hero-select preban-select" id="myPre2" name="myPre2">
+                                <option value="">Pre Ban 2</option>
+                                {% for option in hero_list %}
+                                    <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="dropdown-column">
-            
-            <div class="innerCol">
-                <img class="RecPor" id="myRecPor1" src="">
-                <img class="RecPor" id="myRecPor2" src="">
-            </div>
-            
-            <p>{{draft_response_vals}}</p>
-      
-            <img class="asset" src="{{ url_for('get_vs') }}" alt="Example Image">
-
-            <div class="innerCol">
-                <img class="PrePor" id="myPrePor1" src="">
-                <img class="PrePor" id="myPrePor2" src="">
-                <img class="PrePor" id="enPrePor1" src="">
-                <img class="PrePor" id="enPrePor2" src="">
-            </div>
-
-
-            <div class="innerCol">
-            <form>
-                <select class="myPre1" id="myPre1{{ i }}" name="en{{ i }}">
-                    <option value="">My Pre Ban 1</option>
-                    {% for option in hero_list %}
-                        <option value="{{ option['code'] }}">{{ option["name"] }}</option>
-                    {% endfor %}
-                </select>
-            </form>
-
-            <form>
-                <select class="myPre2" id="myPre2{{ i }}" name="en{{ i }}">
-                    <option value="">My Pre Ban 2</option>
-                    {% for option in hero_list %}
-                        <option value="{{ option['code'] }}">{{ option["name"] }}</option>
-                    {% endfor %}
-                </select>
-            </form>
-
-            <form>
-                <select class="enPre1" id="enPre1{{ i }}" name="en{{ i }}">
-                    <option value="">Enemy Pre Ban 1 </option>
-                    {% for option in hero_list %}
-                        <option value="{{ option['code'] }}">{{ option["name"] }}</option>
-                    {% endfor %}
-                </select>
-            </form>
-            <form>
-                <select class="enPre2" id="enPre2{{ i }}" name="en{{ i }}">
-                    <option value="">Enemy Pre Ban 2 </option>
-                    {% for option in hero_list %}
-                        <option value="{{ option['code'] }}">{{ option["name"] }}</option>
-                    {% endfor %}
-                </select>
-            </form>
-        </div>
-
-            </br>
-            <button type="submit" id="winButton">Update Draft</button>
-            </br>
-            </br>
-            </br>
-            <h3 id ="winText"></h3>
-            <button type="submit" id="winProb">Get Win Prediction</button>
-        </br>
-           
-    </br>
-        </div>
-
-        
-        <div class="dropdown-column">
-            <div class="dropdown-menu">
-                {% for i in range(1, 6) %}
-                    <form>
-                        <select class="selectEn" id="enPick{{ i }}" name="enPick{{ i }}">
+                <!-- Hero Picks -->
+                <div class="picks-section">
+                    {% for i in range(1, 6) %}
+                    <div class="hero-card player-card">
+                        <div class="hero-frame">
+                            <div class="frame-corner tl"></div>
+                            <div class="frame-corner tr"></div>
+                            <div class="frame-corner bl"></div>
+                            <div class="frame-corner br"></div>
+                            <img class="hero-portrait" id="myImg{{ i }}" src="" alt="">
+                            <div class="hero-glow"></div>
+                        </div>
+                        <select class="hero-select pick-select" id="myPick{{ i }}" name="myPick{{ i }}">
                             <option value="">Pick {{i}}</option>
                             {% for option in hero_list %}
-                                <option value="{{ option['code'] }}">{{ option["name"] }}</option>
+                                <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
                             {% endfor %}
                         </select>
-                    </form>
-                {% endfor %}
+                        <div class="ban-control">
+                            <input type="radio" id="myPost{{i}}" name="optionsMy" value="optionMy">
+                            <label for="myPost{{i}}">BAN</label>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Center Section -->
+            <div class="arena-center">
+                <!-- Recommendations -->
+                <div class="recommendations-panel">
+                    <h3 class="panel-title">RECOMMENDED</h3>
+                    <div class="rec-heroes">
+                        <div class="rec-frame">
+                            <img class="rec-portrait" id="myRecPor1" src="" alt="">
+                            <div class="rec-glow"></div>
+                        </div>
+                        <div class="rec-frame">
+                            <img class="rec-portrait" id="myRecPor2" src="" alt="">
+                            <div class="rec-glow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VS Emblem -->
+                <div class="vs-emblem">
+                    <div class="vs-glow"></div>
+                    <svg class="vs-image" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#f4d03f;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4a9eff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#2e5d99;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="redGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff4757;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#992838;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Hexagonal background -->
+                        <polygon points="100,20 170,60 170,140 100,180 30,140 30,60"
+                                 fill="rgba(10, 14, 39, 0.8)"
+                                 stroke="url(#goldGradient)"
+                                 stroke-width="3"
+                                 filter="url(#glow)"/>
+
+                        <!-- Inner hexagon -->
+                        <polygon points="100,35 155,65 155,135 100,165 45,135 45,65"
+                                 fill="none"
+                                 stroke="url(#goldGradient)"
+                                 stroke-width="1"
+                                 opacity="0.5"/>
+
+                        <!-- V letter -->
+                        <text x="75" y="130"
+                              font-family="Cinzel, serif"
+                              font-size="70"
+                              font-weight="900"
+                              fill="url(#goldGradient)"
+                              filter="url(#glow)"
+                              style="letter-spacing: -5px;">V</text>
+
+                        <!-- S letter -->
+                        <text x="115" y="130"
+                              font-family="Cinzel, serif"
+                              font-size="70"
+                              font-weight="900"
+                              fill="url(#goldGradient)"
+                              filter="url(#glow)"
+                              style="letter-spacing: -5px;">S</text>
+
+                        <!-- Corner decorations -->
+                        <circle cx="100" cy="20" r="4" fill="url(#goldGradient)" filter="url(#glow)"/>
+                        <circle cx="170" cy="60" r="4" fill="url(#goldGradient)" filter="url(#glow)"/>
+                        <circle cx="170" cy="140" r="4" fill="url(#goldGradient)" filter="url(#glow)"/>
+                        <circle cx="100" cy="180" r="4" fill="url(#goldGradient)" filter="url(#glow)"/>
+                        <circle cx="30" cy="140" r="4" fill="url(#goldGradient)" filter="url(#glow)"/>
+                        <circle cx="30" cy="60" r="4" fill="url(#goldGradient)" filter="url(#glow)"/>
+
+                        <!-- Blue accent (left side) -->
+                        <line x1="30" y1="60" x2="45" y2="65" stroke="url(#blueGradient)" stroke-width="2" opacity="0.7"/>
+                        <line x1="30" y1="140" x2="45" y2="135" stroke="url(#blueGradient)" stroke-width="2" opacity="0.7"/>
+
+                        <!-- Red accent (right side) -->
+                        <line x1="170" y1="60" x2="155" y2="65" stroke="url(#redGradient)" stroke-width="2" opacity="0.7"/>
+                        <line x1="170" y1="140" x2="155" y2="135" stroke="url(#redGradient)" stroke-width="2" opacity="0.7"/>
+                    </svg>
+                    <div class="vs-ring"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-panel">
+                    <button class="arena-button primary" id="winButton">
+                        <span class="button-shine"></span>
+                        <span class="button-text">UPDATE DRAFT</span>
+                    </button>
+                    <button class="arena-button secondary" id="winProb">
+                        <span class="button-shine"></span>
+                        <span class="button-text">PREDICT OUTCOME</span>
+                    </button>
+                    <h3 class="prediction-result" id="winText"></h3>
+                </div>
+            </div>
+
+            <!-- Enemy Side -->
+            <div class="team-side enemy-side">
+                <div class="team-label enemy-label">
+                    <span class="label-text">ENEMY TEAM</span>
+                </div>
+
+                <!-- Pre-Bans -->
+                <div class="prebans-section">
+                    <h3 class="section-title">Pre-Bans</h3>
+                    <div class="prebans-grid">
+                        <div class="preban-slot">
+                            <img class="preban-portrait" id="enPrePor1" src="" alt="">
+                            <select class="hero-select preban-select enemy-select" id="enPre1" name="enPre1">
+                                <option value="">Pre Ban 1</option>
+                                {% for option in hero_list %}
+                                    <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="preban-slot">
+                            <img class="preban-portrait" id="enPrePor2" src="" alt="">
+                            <select class="hero-select preban-select enemy-select" id="enPre2" name="enPre2">
+                                <option value="">Pre Ban 2</option>
+                                {% for option in hero_list %}
+                                    <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Picks -->
+                <div class="picks-section">
+                    {% for i in range(1, 6) %}
+                    <div class="hero-card enemy-card">
+                        <div class="hero-frame">
+                            <div class="frame-corner tl"></div>
+                            <div class="frame-corner tr"></div>
+                            <div class="frame-corner bl"></div>
+                            <div class="frame-corner br"></div>
+                            <img class="hero-portrait" id="enImg{{ i }}" src="" alt="">
+                            <div class="hero-glow"></div>
+                        </div>
+                        <select class="hero-select pick-select enemy-select" id="enPick{{ i }}" name="enPick{{ i }}">
+                            <option value="">Pick {{i}}</option>
+                            {% for option in hero_list %}
+                                <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="ban-control">
+                            <input type="radio" id="enPost{{i}}" name="optionsEn" value="optionEn">
+                            <label for="enPost{{i}}">BAN</label>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-
-        <div class="dropdown-column">
-            
-            {% for i in range(1, 6) %}
-                <img class="portraitsEn" id="enImg{{ i }}" src="">
-            {% endfor %}
-        </div>
-        <div class="dropdown-column">
-
-            {% for i in range(1, 6) %}
-                <input type="radio" id="enPost{{i}}" name="optionsEn" value="optionEn">
-                <label  class="labelOp" for="optionEn">Ban</label>
-                </br></br></br></br></br>
-            {% endfor %}
-    </div>
     </div>
 
     <script>
-
-        for (let i = 1; i <= 5; i++) {
-            let dropdown = document.getElementById('myPick' + i);
-            let image = document.getElementById('myImg' + i);
-
-            dropdown.addEventListener('change', function(event) {
-                image.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + event.target.value + "_s.png";
-            });
+        // Custom template for Select2 with hero images
+        function formatHero(hero) {
+            if (!hero.id) {
+                return hero.text;
+            }
+            var imgUrl = $(hero.element).data('img');
+            if (imgUrl) {
+                var $hero = $(
+                    '<span class="hero-option"><img src="' + imgUrl + '" onerror="this.style.display=\'none\'" /> ' + hero.text + '</span>'
+                );
+                return $hero;
+            }
+            return hero.text;
         }
 
-        for (let i = 1; i <= 5; i++) {
-            let dropdown = document.getElementById('enPick' + i);
-            let image = document.getElementById('enImg' + i);
-
-            dropdown.addEventListener('change', function(event) {
-                image.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + event.target.value + "_s.png";
+        // Initialize Select2 on all hero selects
+        $(document).ready(function() {
+            $('.hero-select').select2({
+                placeholder: 'Select Hero...',
+                allowClear: true,
+                templateResult: formatHero,
+                templateSelection: formatHero,
+                matcher: function(params, data) {
+                    if ($.trim(params.term) === '') {
+                        return data;
+                    }
+                    if (typeof data.text === 'undefined') {
+                        return null;
+                    }
+                    if (data.text.toLowerCase().indexOf(params.term.toLowerCase()) > -1) {
+                        return data;
+                    }
+                    return null;
+                }
             });
-        }
 
-        for (let i = 1; i <= 2; i++) {
-            let dropdown = document.getElementById('myPre' + i);
-            let image = document.getElementById('myPrePor' + i); 
+            // Update images when selection changes
+            for (let i = 1; i <= 5; i++) {
+                $('#myPick' + i).on('select2:select select2:clear', function(e) {
+                    let image = document.getElementById('myImg' + i);
+                    let val = $(this).val();
+                    let card = $(this).closest('.hero-card');
+                    if (val) {
+                        image.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + val + "_s.png";
+                        card.addClass('has-hero');
+                    } else {
+                        image.src = "";
+                        card.removeClass('has-hero');
+                    }
+                });
 
-            dropdown.addEventListener('change', function(event) {
-                image.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + event.target.value + "_s.png";
+                $('#enPick' + i).on('select2:select select2:clear', function(e) {
+                    let image = document.getElementById('enImg' + i);
+                    let val = $(this).val();
+                    let card = $(this).closest('.hero-card');
+                    if (val) {
+                        image.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + val + "_s.png";
+                        card.addClass('has-hero');
+                    } else {
+                        image.src = "";
+                        card.removeClass('has-hero');
+                    }
+                });
+            }
+
+            // Pre-ban image updates
+            $('#myPre1').on('select2:select select2:clear', function(e) {
+                let image = document.getElementById('myPrePor1');
+                let val = $(this).val();
+                image.src = val ? "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + val + "_s.png" : "";
+                $(this).closest('.preban-slot').toggleClass('has-hero', !!val);
             });
-        }
 
-        for (let i = 1; i <= 2; i++) {
-            let dropdown = document.getElementById('enPre' + i);
-            let image = document.getElementById('enPrePor' + i); 
-
-            dropdown.addEventListener('change', function(event) {
-                image.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + event.target.value + "_s.png";
+            $('#myPre2').on('select2:select select2:clear', function(e) {
+                let image = document.getElementById('myPrePor2');
+                let val = $(this).val();
+                image.src = val ? "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + val + "_s.png" : "";
+                $(this).closest('.preban-slot').toggleClass('has-hero', !!val);
             });
-        }
-        
-        // Recommendations 
 
+            $('#enPre1').on('select2:select select2:clear', function(e) {
+                let image = document.getElementById('enPrePor1');
+                let val = $(this).val();
+                image.src = val ? "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + val + "_s.png" : "";
+                $(this).closest('.preban-slot').toggleClass('has-hero', !!val);
+            });
 
+            $('#enPre2').on('select2:select select2:clear', function(e) {
+                let image = document.getElementById('enPrePor2');
+                let val = $(this).val();
+                image.src = val ? "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + val + "_s.png" : "";
+                $(this).closest('.preban-slot').toggleClass('has-hero', !!val);
+            });
+        });
+
+        // Update Draft button
         $(document).ready(function(){
             $('#winButton').click(function(){
                 let selectedValues = {};
                 for (let i = 1; i <= 5; i++) {
-                    selectedValues['enPick'+i] = (document.getElementById('enPick'+i).value)
-                    selectedValues['myPick'+i] = (document.getElementById('myPick'+i).value)
+                    selectedValues['enPick'+i] = $('#enPick'+i).val() || '';
+                    selectedValues['myPick'+i] = $('#myPick'+i).val() || '';
                 }
 
-                for (let i = 1; i <= 2; i++) {
-                    selectedValues['myPre'+i] = (document.getElementById('myPre'+i).value)
-                    selectedValues['enPre'+i] = (document.getElementById('enPre'+i).value)
-                }
-                
-                let rec1 = document.getElementById("myRecPor1")
-                let rec2 = document.getElementById("myRecPor2")
+                selectedValues['myPre1'] = $('#myPre1').val() || '';
+                selectedValues['myPre2'] = $('#myPre2').val() || '';
+                selectedValues['enPre1'] = $('#enPre1').val() || '';
+                selectedValues['enPre2'] = $('#enPre2').val() || '';
+
+                let rec1 = document.getElementById("myRecPor1");
+                let rec2 = document.getElementById("myRecPor2");
+
                 $.ajax({
                     url: '/updateDraftPick',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(selectedValues),
                     success: function(response){
+                        if (response[0]) {
                             rec1.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + response[0] + "_s.png";
+                            $(rec1).closest('.rec-frame').addClass('has-hero');
+                        }
+                        if (response[1]) {
                             rec2.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + response[1] + "_s.png";
-                        
+                            $(rec2).closest('.rec-frame').addClass('has-hero');
+                        }
                     }
                 });
             });
         });
 
-
+        // Win Prediction button
         $(document).ready(function(){
             $('#winProb').click(function(){
-
                 let selectedValues = {};
                 for (let i = 1; i <= 5; i++) {
-                    selectedValues['enPick'+i] = (document.getElementById('enPick'+i).value)
-                    selectedValues['myPick'+i] = (document.getElementById('myPick'+i).value)
+                    selectedValues['enPick'+i] = $('#enPick'+i).val() || '';
+                    selectedValues['myPick'+i] = $('#myPick'+i).val() || '';
                 }
 
-                for (let i = 1; i <= 2; i++) {
-                    selectedValues['myPre'+i] = (document.getElementById('myPre'+i).value)
-                    selectedValues['enPre'+i] = (document.getElementById('enPre'+i).value)
-                }
+                selectedValues['myPre1'] = $('#myPre1').val() || '';
+                selectedValues['myPre2'] = $('#myPre2').val() || '';
+                selectedValues['enPre1'] = $('#enPre1').val() || '';
+                selectedValues['enPre2'] = $('#enPre2').val() || '';
 
                 for (let i = 1; i <= 5; i++) {
                     if (document.getElementById('myPost'+i).checked) {
-                        selectedValues['myPost'] = (document.getElementById('myPick'+i).value)
+                        selectedValues['myPost'] = $('#myPick'+i).val() || '';
                     }
                 }
-                 
+
                 for (let i = 1; i <= 5; i++) {
                     if (document.getElementById('enPost'+i).checked) {
-                        selectedValues['enPost'] = (document.getElementById('enPick'+i).value)
+                        selectedValues['enPost'] = $('#enPick'+i).val() || '';
                     }
-                }    
+                }
+
                 let winText = document.getElementById('winText');
                 $.ajax({
                     url: '/calculateWin',
@@ -243,15 +433,15 @@
                     contentType: 'application/json',
                     data: JSON.stringify(selectedValues),
                     success: function(response){
-                        console.log(response.res)
-                        let isWin = response.res
+                        let isWin = response.res;
+                        winText.style.display = 'block';
                         if(isWin == 1){
-                            winText.innerText = "Loss"
-                        }else{
-                            winText.innerText = "Win" 
+                            winText.innerText = "PREDICTED: DEFEAT";
+                            winText.className = 'prediction-result defeat';
+                        } else {
+                            winText.innerText = "PREDICTED: VICTORY";
+                            winText.className = 'prediction-result victory';
                         }
-                        
-                        
                     }
                 });
             });

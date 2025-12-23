@@ -24,20 +24,8 @@
         "name": "Adventurer Ras"
     },
     {
-        "code": "c1138",
-        "name": "ae-GISELLE"
-    },
-    {
-        "code": "c1137",
-        "name": "ae-KARINA"
-    },
-    {
-        "code": "c1140",
-        "name": "ae-NINGNING"
-    },
-    {
-        "code": "c1139",
-        "name": "ae-WINTER"
+        "code": "c5110",
+        "name": "Afternoon Soak Flan"
     },
     {
         "code": "c3105",
@@ -52,8 +40,16 @@
         "name": "Ains"
     },
     {
+        "code": "c1155",
+        "name": "Ainz Ooal Gown"
+    },
+    {
         "code": "c1018",
         "name": "Aither"
+    },
+    {
+        "code": "c1156",
+        "name": "Albedo"
     },
     {
         "code": "c1100",
@@ -96,6 +92,10 @@
         "name": "Apocalypse Ravi"
     },
     {
+        "code": "c5175",
+        "name": "Aram"
+    },
+    {
         "code": "c1048",
         "name": "Aramintha"
     },
@@ -110,6 +110,10 @@
     {
         "code": "c2099",
         "name": "Architect Laika"
+    },
+    {
+        "code": "c5128",
+        "name": "Argent Waves Hwayoung"
     },
     {
         "code": "c1129",
@@ -196,6 +200,14 @@
         "name": "Benimaru"
     },
     {
+        "code": "c3162",
+        "name": "Bernard"
+    },
+    {
+        "code": "c1160",
+        "name": "Birgitta"
+    },
+    {
         "code": "c2021",
         "name": "Blaze Dingo"
     },
@@ -216,6 +228,10 @@
         "name": "Bomb Model Kanna"
     },
     {
+        "code": "c2124",
+        "name": "Boss Arunka"
+    },
+    {
         "code": "c2024",
         "name": "Briar Witch Iseria"
     },
@@ -230,6 +246,10 @@
     {
         "code": "c1154",
         "name": "Byblis"
+    },
+    {
+        "code": "c2128",
+        "name": "Bystander Hwayoung"
     },
     {
         "code": "c3124",
@@ -336,16 +356,16 @@
         "name": "Coli"
     },
     {
+        "code": "c1099",
+        "name": "Command Model Laika"
+    },
+    {
         "code": "c4035",
         "name": "Commander Lorina"
     },
     {
         "code": "c2080",
         "name": "Commander Pavel"
-    },
-    {
-        "code": "c1099",
-        "name": "Command Model Laika"
     },
     {
         "code": "c2089",
@@ -396,6 +416,10 @@
         "name": "Dingo"
     },
     {
+        "code": "c2129",
+        "name": "Disciplinary Prefect Aria"
+    },
+    {
         "code": "c1094",
         "name": "Dizzy"
     },
@@ -410,6 +434,10 @@
     {
         "code": "c3044",
         "name": "Doris"
+    },
+    {
+        "code": "c2106",
+        "name": "Dragon Bride Senya"
     },
     {
         "code": "c2132",
@@ -452,6 +480,10 @@
         "name": "Emilia"
     },
     {
+        "code": "c2113",
+        "name": "Empyrean Ilynav"
+    },
+    {
         "code": "c3022",
         "name": "Enott"
     },
@@ -484,6 +516,22 @@
         "name": "Fallen Cecilia"
     },
     {
+        "code": "c1170",
+        "name": "Fenne"
+    },
+    {
+        "code": "c1158",
+        "name": "Fenris"
+    },
+    {
+        "code": "c1173",
+        "name": "Fern"
+    },
+    {
+        "code": "c5111",
+        "name": "Festive Eda"
+    },
+    {
         "code": "c2032",
         "name": "Fighter Maya"
     },
@@ -496,6 +544,14 @@
         "name": "Free Spirit Tieria"
     },
     {
+        "code": "c1163",
+        "name": "Frida"
+    },
+    {
+        "code": "c1172",
+        "name": "Frieren"
+    },
+    {
         "code": "c1147",
         "name": "Fumyr"
     },
@@ -506,6 +562,10 @@
     {
         "code": "c2035",
         "name": "General Purrgis"
+    },
+    {
+        "code": "c2001",
+        "name": "Genesis Ras"
     },
     {
         "code": "c3103",
@@ -524,12 +584,20 @@
         "name": "Great Chief Khawana"
     },
     {
+        "code": "c5070",
+        "name": "Guard Captain Krau"
+    },
+    {
         "code": "c2018",
         "name": "Guider Aither"
     },
     {
         "code": "c3024",
         "name": "Gunther"
+    },
+    {
+        "code": "c1153",
+        "name": "Harsetti"
     },
     {
         "code": "c3135",
@@ -548,12 +616,20 @@
         "name": "Hazel"
     },
     {
+        "code": "c1178",
+        "name": "Hecate"
+    },
+    {
         "code": "c3122",
         "name": "Helen"
     },
     {
         "code": "c3023",
         "name": "Helga"
+    },
+    {
+        "code": "c2126",
+        "name": "Hellion Lua"
     },
     {
         "code": "c5016",
@@ -580,12 +656,20 @@
         "name": "Ilynav"
     },
     {
+        "code": "c1161",
+        "name": "Immortal Wukong"
+    },
+    {
         "code": "c2085",
         "name": "Inferno Khawazu"
     },
     {
         "code": "c6017",
         "name": "Infinite Horizon Achates"
+    },
+    {
+        "code": "c4158",
+        "name": "Inheritor Amiki"
     },
     {
         "code": "c1024",
@@ -680,6 +764,10 @@
         "name": "Krau"
     },
     {
+        "code": "c6005",
+        "name": "Lady of the Scales"
+    },
+    {
         "code": "c1159",
         "name": "Laia"
     },
@@ -716,16 +804,16 @@
         "name": "Lidica"
     },
     {
-        "code": "c3153",
-        "name": "Lilka"
-    },
-    {
         "code": "c1089",
         "name": "Lilias"
     },
     {
         "code": "c1095",
         "name": "Lilibet"
+    },
+    {
+        "code": "c3153",
+        "name": "Lilka"
     },
     {
         "code": "c2079",
@@ -738,6 +826,10 @@
     {
         "code": "c2071",
         "name": "Lone Crescent Bellona"
+    },
+    {
+        "code": "c2125",
+        "name": "Lone Wolf Peira"
     },
     {
         "code": "c3035",
@@ -868,6 +960,14 @@
         "name": "Nemunas"
     },
     {
+        "code": "c2165",
+        "name": "New Kid Adin"
+    },
+    {
+        "code": "c2066",
+        "name": "New Moon Luna"
+    },
+    {
         "code": "c5082",
         "name": "Ocean Breeze Luluca"
     },
@@ -904,6 +1004,10 @@
         "name": "Penelope"
     },
     {
+        "code": "c3165",
+        "name": "Pernilla"
+    },
+    {
         "code": "c2110",
         "name": "Pirate Captain Flan"
     },
@@ -918,6 +1022,10 @@
     {
         "code": "c3005",
         "name": "Pyllis"
+    },
+    {
+        "code": "c3164",
+        "name": "Ragnvald"
     },
     {
         "code": "c1115",
@@ -960,6 +1068,10 @@
         "name": "Researcher Carrot"
     },
     {
+        "code": "c3160",
+        "name": "Revna"
+    },
+    {
         "code": "c4013",
         "name": "Righteous Thief Roozid"
     },
@@ -980,6 +1092,10 @@
         "name": "Rin"
     },
     {
+        "code": "c1168",
+        "name": "Rinak"
+    },
+    {
         "code": "c1136",
         "name": "Riza Hawkeye"
     },
@@ -990,6 +1106,10 @@
     {
         "code": "c1102",
         "name": "Roana"
+    },
+    {
+        "code": "c1169",
+        "name": "Robin"
     },
     {
         "code": "c1043",
@@ -1016,12 +1136,32 @@
         "name": "Sage Baal & Sezan"
     },
     {
+        "code": "c1177",
+        "name": "Saria"
+    },
+    {
         "code": "c4144",
         "name": "Savior Adin"
     },
     {
+        "code": "c1060",
+        "name": "Schniel"
+    },
+    {
+        "code": "c2131",
+        "name": "School Nurse Yulha"
+    },
+    {
         "code": "c1020",
         "name": "Schuri"
+    },
+    {
+        "code": "c2112",
+        "name": "Sea Phantom Politis"
+    },
+    {
+        "code": "c6065",
+        "name": "Sealed Eye Surin"
     },
     {
         "code": "c5071",
@@ -1040,6 +1180,10 @@
         "name": "Serila"
     },
     {
+        "code": "c1176",
+        "name": "Setsuka"
+    },
+    {
         "code": "c1038",
         "name": "Sez"
     },
@@ -1052,12 +1196,20 @@
         "name": "Shadow Rose"
     },
     {
+        "code": "c1157",
+        "name": "Shalltear"
+    },
+    {
         "code": "c1132",
         "name": "Sharun"
     },
     {
         "code": "c4052",
         "name": "Shepherd Jena"
+    },
+    {
+        "code": "c2076",
+        "name": "Shepherd of the Dark Diene"
     },
     {
         "code": "c2017",
@@ -1076,12 +1228,12 @@
         "name": "Silk"
     },
     {
-        "code": "c4123",
-        "name": "Silvertide Christy"
-    },
-    {
         "code": "c2048",
         "name": "Silver Blade Aramintha"
+    },
+    {
+        "code": "c4123",
+        "name": "Silvertide Christy"
     },
     {
         "code": "c2062",
@@ -1112,8 +1264,16 @@
         "name": "Spirit Eye Celine"
     },
     {
+        "code": "c1174",
+        "name": "Stark"
+    },
+    {
         "code": "c1034",
         "name": "Straze"
+    },
+    {
+        "code": "c2127",
+        "name": "Successor Taeyou"
     },
     {
         "code": "c5009",
@@ -1138,6 +1298,10 @@
     {
         "code": "c3015",
         "name": "Sven"
+    },
+    {
+        "code": "c5072",
+        "name": "Swift Flagbearer Sigret"
     },
     {
         "code": "c2088",
@@ -1184,6 +1348,10 @@
         "name": "Top Model Luluca"
     },
     {
+        "code": "c1171",
+        "name": "Tori"
+    },
+    {
         "code": "c2036",
         "name": "Troublemaker Crozet"
     },
@@ -1212,6 +1380,10 @@
         "name": "Veronica"
     },
     {
+        "code": "c1166",
+        "name": "Victorika"
+    },
+    {
         "code": "c4103",
         "name": "Vigilante Leader Glenn"
     },
@@ -1236,16 +1408,36 @@
         "name": "Wanderer Silk"
     },
     {
+        "code": "c6014",
+        "name": "Wandering Prince Cidd"
+    },
+    {
         "code": "c2020",
         "name": "Watcher Schuri"
+    },
+    {
+        "code": "c6020",
+        "name": "Westwind Executioner Schuri"
     },
     {
         "code": "m0171",
         "name": "Wild Angara"
     },
     {
+        "code": "c6050",
+        "name": "Witch of the Mere Tenebria"
+    },
+    {
+        "code": "c6003",
+        "name": "Wretched Rose"
+    },
+    {
         "code": "c3134",
         "name": "Yoonryoung"
+    },
+    {
+        "code": "c1162",
+        "name": "Young Senya"
     },
     {
         "code": "c1016",
@@ -1278,5 +1470,21 @@
     {
         "code": "c1133",
         "name": "Zio"
+    },
+    {
+        "code": "c1138",
+        "name": "ae-GISELLE"
+    },
+    {
+        "code": "c1137",
+        "name": "ae-KARINA"
+    },
+    {
+        "code": "c1140",
+        "name": "ae-NINGNING"
+    },
+    {
+        "code": "c1139",
+        "name": "ae-WINTER"
     }
 ]
