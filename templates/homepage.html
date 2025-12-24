@@ -39,6 +39,14 @@
             <div class="header-ornament right"></div>
         </header>
 
+        <!-- Disclaimer Notice -->
+        <div class="disclaimer-notice">
+            <div class="disclaimer-icon">ℹ️</div>
+            <div class="disclaimer-text">
+                <strong>Disclaimer:</strong> This tool was originally created for a university final project and has been updated to include current heroes. It should <strong>not be relied upon for real RTA matches</strong>. Use at your own discretion for educational and practice purposes only.
+            </div>
+        </div>
+
         <!-- Main Arena -->
         <div class="arena-battlefield">
             <!-- Player Side -->
@@ -75,7 +83,7 @@
                 <!-- Hero Picks -->
                 <div class="picks-section">
                     {% for i in range(1, 6) %}
-                    <div class="hero-card player-card">
+                    <div class="hero-card player-card {% if i == 3 %}ban-protected{% endif %}">
                         <div class="hero-frame">
                             <div class="frame-corner tl"></div>
                             <div class="frame-corner tr"></div>
@@ -90,10 +98,12 @@
                                 <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
                             {% endfor %}
                         </select>
+                        {% if i != 3 %}
                         <div class="ban-control">
                             <input type="radio" id="myPost{{i}}" name="optionsMy" value="optionMy">
                             <label for="myPost{{i}}">BAN</label>
                         </div>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
@@ -242,7 +252,7 @@
                 <!-- Hero Picks -->
                 <div class="picks-section">
                     {% for i in range(1, 6) %}
-                    <div class="hero-card enemy-card">
+                    <div class="hero-card enemy-card {% if i == 3 %}ban-protected{% endif %}">
                         <div class="hero-frame">
                             <div class="frame-corner tl"></div>
                             <div class="frame-corner tr"></div>
@@ -257,10 +267,12 @@
                                 <option value="{{ option['code'] }}" data-img="https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/{{ option['code'] }}_s.png">{{ option["name"] }}</option>
                             {% endfor %}
                         </select>
+                        {% if i != 3 %}
                         <div class="ban-control">
                             <input type="radio" id="enPost{{i}}" name="optionsEn" value="optionEn">
                             <label for="enPost{{i}}">BAN</label>
                         </div>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
@@ -387,6 +399,13 @@
                     contentType: 'application/json',
                     data: JSON.stringify(selectedValues),
                     success: function(response){
+                        // Clear both recommendations first
+                        rec1.src = "";
+                        rec2.src = "";
+                        $(rec1).closest('.rec-frame').removeClass('has-hero');
+                        $(rec2).closest('.rec-frame').removeClass('has-hero');
+
+                        // Set new recommendations
                         if (response[0]) {
                             rec1.src = "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/" + response[0] + "_s.png";
                             $(rec1).closest('.rec-frame').addClass('has-hero');
@@ -415,24 +434,32 @@
                 selectedValues['enPre2'] = $('#enPre2').val() || '';
 
                 for (let i = 1; i <= 5; i++) {
-                    if (document.getElementById('myPost'+i).checked) {
+                    if (i === 3) continue; // Skip pick 3 (no ban option)
+                    let myRadio = document.getElementById('myPost'+i);
+                    if (myRadio && myRadio.checked) {
                         selectedValues['myPost'] = $('#myPick'+i).val() || '';
                     }
                 }
 
                 for (let i = 1; i <= 5; i++) {
-                    if (document.getElementById('enPost'+i).checked) {
+                    if (i === 3) continue; // Skip pick 3 (no ban option)
+                    let enRadio = document.getElementById('enPost'+i);
+                    if (enRadio && enRadio.checked) {
                         selectedValues['enPost'] = $('#enPick'+i).val() || '';
                     }
                 }
 
                 let winText = document.getElementById('winText');
+
+                console.log('Predict Outcome - Selected Values:', selectedValues);
+
                 $.ajax({
                     url: '/calculateWin',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(selectedValues),
                     success: function(response){
+                        console.log('Predict Outcome - Response:', response);
                         let isWin = response.res;
                         winText.style.display = 'block';
                         if(isWin == 1){
@@ -442,9 +469,100 @@
                             winText.innerText = "PREDICTED: VICTORY";
                             winText.className = 'prediction-result victory';
                         }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Predict Outcome - Error:', error);
+                        console.error('Predict Outcome - Status:', status);
+                        console.error('Predict Outcome - Response:', xhr.responseText);
+                        winText.style.display = 'block';
+                        winText.innerText = "ERROR: Unable to predict";
+                        winText.className = 'prediction-result defeat';
                     }
                 });
             });
+        });
+
+        // Ban management system
+        $(document).ready(function(){
+            // Function to get all currently banned heroes
+            function getBannedHeroes() {
+                let banned = [];
+
+                // Get pre-bans
+                let myPre1 = $('#myPre1').val();
+                let myPre2 = $('#myPre2').val();
+                let enPre1 = $('#enPre1').val();
+                let enPre2 = $('#enPre2').val();
+
+                if (myPre1) banned.push(myPre1);
+                if (myPre2) banned.push(myPre2);
+                if (enPre1) banned.push(enPre1);
+                if (enPre2) banned.push(enPre2);
+
+                // Get post-bans (from radio buttons)
+                for (let i = 1; i <= 5; i++) {
+                    if (i === 3) continue; // Skip pick 3 (no ban option)
+
+                    let myRadio = document.getElementById('myPost'+i);
+                    let enRadio = document.getElementById('enPost'+i);
+
+                    if (myRadio && myRadio.checked) {
+                        let val = $('#myPick'+i).val();
+                        if (val) banned.push(val);
+                    }
+
+                    if (enRadio && enRadio.checked) {
+                        let val = $('#enPick'+i).val();
+                        if (val) banned.push(val);
+                    }
+                }
+
+                return banned;
+            }
+
+            // Function to update all dropdowns to disable banned heroes
+            function updateBannedOptions() {
+                let bannedHeroes = getBannedHeroes();
+
+                // Update all hero select dropdowns
+                $('.hero-select').each(function() {
+                    let $select = $(this);
+                    let currentVal = $select.val();
+
+                    // Enable all options first
+                    $select.find('option').prop('disabled', false);
+
+                    // Disable banned heroes (except if it's the current selection)
+                    bannedHeroes.forEach(function(heroCode) {
+                        if (heroCode !== currentVal) {
+                            $select.find('option[value="' + heroCode + '"]').prop('disabled', true);
+                        }
+                    });
+
+                    // Refresh Select2 to show changes
+                    $select.trigger('change.select2');
+                });
+            }
+
+            // Add event listeners to all pre-ban selects
+            $('#myPre1, #myPre2, #enPre1, #enPre2').on('select2:select select2:clear', function() {
+                updateBannedOptions();
+            });
+
+            // Add event listeners to all hero pick selects
+            for (let i = 1; i <= 5; i++) {
+                $('#myPick' + i + ', #enPick' + i).on('select2:select select2:clear', function() {
+                    updateBannedOptions();
+                });
+            }
+
+            // Add event listeners to all ban radio buttons
+            $('input[name="optionsMy"], input[name="optionsEn"]').on('change', function() {
+                updateBannedOptions();
+            });
+
+            // Initial update
+            updateBannedOptions();
         });
     </script>
 </body>

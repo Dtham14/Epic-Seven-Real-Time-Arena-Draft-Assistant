@@ -195,7 +195,7 @@ def draft_response(e1, m1, e2, m2, e3, m3,
             if row['is_first'] == 0 and row['enemy1'] == e1:
                 response.append([row['main1'], row['main2']])
 
-        result = get_suggestions_from_response(response, cannot_draft)
+        result = get_suggestions_from_response(response, cannot_draft, num_picks=2)
         if result:
             return result
 
@@ -248,7 +248,7 @@ def draft_response(e1, m1, e2, m2, e3, m3,
 
         if not enemy_heroes:
             print("No enemy heroes to counter, using general fallback")
-            counters = get_best_counters(['Boss Arunka'], cannot_draft, num_picks=3)  # Use popular hero as baseline
+            counters = get_best_counters(['Boss Arunka'], cannot_draft, num_picks=1)  # Use popular hero as baseline
             return counters if counters else []
 
         # Try exact match first (e4 AND e5) if both are filled
@@ -257,7 +257,7 @@ def draft_response(e1, m1, e2, m2, e3, m3,
                 if row['is_first'] == 0 and row['enemy4'] == e4 and row['enemy5'] == e5:
                     response.append([row['main5']])
 
-            result = get_suggestions_from_response(response, cannot_draft, num_picks=3)
+            result = get_suggestions_from_response(response, cannot_draft, num_picks=1)
             if result:
                 return result
 
@@ -267,13 +267,13 @@ def draft_response(e1, m1, e2, m2, e3, m3,
                 if row['is_first'] == 0 and (row['enemy4'] == e4 or row['enemy5'] == e5):
                     response.append([row['main5']])
 
-            result = get_suggestions_from_response(response, cannot_draft, num_picks=3)
+            result = get_suggestions_from_response(response, cannot_draft, num_picks=1)
             if result:
                 return result
 
         # Fallback: use counter-pick system against all known enemies
         print(f"Calling get_best_counters with enemies={enemy_heroes}, cannot_draft has {len(cannot_draft)} items")
-        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=3)
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=1)
         print(f"Counter result: {counters}")
         if counters:
             print(f"Using counter-picks for m5 against {enemy_heroes}: {counters}")

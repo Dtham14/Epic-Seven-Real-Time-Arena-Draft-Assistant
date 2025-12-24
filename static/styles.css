@@ -194,6 +194,50 @@ body::before {
 }
 
 /* ========================================
+   DISCLAIMER NOTICE
+   ======================================== */
+.disclaimer-notice {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.1));
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    border-left: 4px solid #ffc107;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 0 auto 30px;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow:
+        0 4px 15px rgba(255, 193, 7, 0.2),
+        inset 0 0 20px rgba(255, 193, 7, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.disclaimer-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    animation: disclaimerPulse 2s infinite ease-in-out;
+}
+
+@keyframes disclaimerPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.disclaimer-text {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.disclaimer-text strong {
+    color: #ffc107;
+    font-weight: 700;
+}
+
+/* ========================================
    BATTLEFIELD LAYOUT
    ======================================== */
 .arena-battlefield {
@@ -442,6 +486,47 @@ body::before {
 @keyframes pulse {
     0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
     50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+}
+
+/* ========================================
+   BAN PROTECTION (3rd Pick)
+   ======================================== */
+.ban-protected {
+    border: 3px solid #51cf66 !important;
+    box-shadow: 0 0 30px rgba(81, 207, 102, 0.6), inset 0 0 20px rgba(81, 207, 102, 0.1) !important;
+    position: relative;
+    margin-top: 20px !important;
+    overflow: visible !important;
+}
+
+.ban-protected::after {
+    content: '🛡️ BAN PROTECTED';
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #51cf66, #40c057);
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 5px 14px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(81, 207, 102, 0.8);
+    z-index: 10;
+    white-space: nowrap;
+    animation: protectionPulse 2s infinite ease-in-out;
+}
+
+@keyframes protectionPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(81, 207, 102, 0.8); }
+    50% { box-shadow: 0 0 25px rgba(81, 207, 102, 1); }
+}
+
+.ban-protected .hero-frame {
+    border: 2px solid #51cf66;
+    border-radius: 8px;
 }
 
 /* ========================================
@@ -932,6 +1017,16 @@ body::before {
 
     .header-ornament {
         width: 80px;
+    }
+
+    .disclaimer-notice {
+        flex-direction: column;
+        text-align: center;
+        padding: 12px 15px;
+    }
+
+    .disclaimer-text {
+        font-size: 12px;
     }
 
     .prebans-grid {
