@@ -1,6 +1,7 @@
 # Flask and web framework
 Flask==3.0.0
 Werkzeug==3.0.1
+gunicorn==21.2.0
 
 # Core dependencies (numpy must come before pandas)
 numpy==1.26.4
