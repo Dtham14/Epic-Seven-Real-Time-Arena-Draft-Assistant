@@ -1,9 +1,19 @@
 import pandas as pd
 from collections import defaultdict
+import pickle
+from pathlib import Path
 
 # Cache for dataset and counter matrix
 _dataset_cache = None
 _counter_matrix_cache = None
+
+# Cache for pre-computed statistics
+_hero_winrates = None
+_hero_pickrates = None
+_hero_matchups = None
+_hero_synergies = None
+
+DATA_DIR = Path("e7_data")
 
 def get_dataset():
     global _dataset_cache
@@ -12,54 +22,43 @@ def get_dataset():
         _dataset_cache = pd.read_csv(file_path)
     return _dataset_cache
 
-def build_counter_matrix():
-    """
-    Build a matrix of win rates: counter_matrix[my_hero][enemy_hero] = win_rate
-    This tells us how well each hero performs AGAINST each enemy hero.
-    """
-    global _counter_matrix_cache
-    if _counter_matrix_cache is not None:
-        return _counter_matrix_cache
+def load_pickle_stats(filename):
+    """Load pre-computed statistics from pickle file"""
+    pkl_path = DATA_DIR / f"{filename}.pkl"
+    try:
+        with open(pkl_path, 'rb') as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        print(f"Warning: {pkl_path} not found. Run build_statistics.py first.")
+        return None
 
-    dataset = get_dataset()
+def get_hero_winrates():
+    """Load overall hero winrates (cached)"""
+    global _hero_winrates
+    if _hero_winrates is None:
+        _hero_winrates = load_pickle_stats("hero_winrates") or {}
+    return _hero_winrates
 
-    # Track wins and total games for each (my_hero, enemy_hero) pair
-    # We consider a "win" when is_win == 0 (main player wins)
-    matchup_wins = defaultdict(lambda: defaultdict(int))
-    matchup_total = defaultdict(lambda: defaultdict(int))
+def get_hero_pickrates():
+    """Load hero pickrates (cached)"""
+    global _hero_pickrates
+    if _hero_pickrates is None:
+        _hero_pickrates = load_pickle_stats("hero_pickrates") or {}
+    return _hero_pickrates
 
-    main_cols = ['main1', 'main2', 'main3', 'main4', 'main5']
-    enemy_cols = ['enemy1', 'enemy2', 'enemy3', 'enemy4', 'enemy5']
+def get_hero_matchups():
+    """Load hero matchup matrix (cached)"""
+    global _hero_matchups
+    if _hero_matchups is None:
+        _hero_matchups = load_pickle_stats("hero_matchups") or {}
+    return _hero_matchups
 
-    for index, row in dataset.iterrows():
-        is_win = row['is_win'] == 0  # 0 means main player won
-
-        # Get all heroes on each side
-        my_heroes = [row[col] for col in main_cols if pd.notna(row[col]) and row[col] != '']
-        enemy_heroes = [row[col] for col in enemy_cols if pd.notna(row[col]) and row[col] != '']
-
-        # For each of my heroes, track their performance against each enemy hero
-        for my_hero in my_heroes:
-            for enemy_hero in enemy_heroes:
-                matchup_total[my_hero][enemy_hero] += 1
-                if is_win:
-                    matchup_wins[my_hero][enemy_hero] += 1
-
-    # Calculate win rates
-    counter_matrix = {}
-    for my_hero in matchup_total:
-        counter_matrix[my_hero] = {}
-        for enemy_hero in matchup_total[my_hero]:
-            total = matchup_total[my_hero][enemy_hero]
-            wins = matchup_wins[my_hero][enemy_hero]
-            if total >= 5:  # Only count if we have enough data
-                counter_matrix[my_hero][enemy_hero] = wins / total
-            else:
-                counter_matrix[my_hero][enemy_hero] = 0.5  # Default to 50% if not enough data
-
-    _counter_matrix_cache = counter_matrix
-    print(f"Built counter matrix with {len(counter_matrix)} heroes")
-    return counter_matrix
+def get_hero_synergies():
+    """Load hero synergy matrix (cached)"""
+    global _hero_synergies
+    if _hero_synergies is None:
+        _hero_synergies = load_pickle_stats("hero_synergies") or {}
+    return _hero_synergies
 
 def get_best_counters(enemy_heroes, cannot_draft, num_picks=2):
     """
@@ -73,9 +72,14 @@ def get_best_counters(enemy_heroes, cannot_draft, num_picks=2):
     Returns:
         List of hero names with best counter scores
     """
-    counter_matrix = build_counter_matrix()
+    matchups = get_hero_matchups()
+
+    if not matchups:
+        print("Warning: No matchup data available")
+        return []
+
     print(f"get_best_counters called: enemy_heroes={enemy_heroes}, num_picks={num_picks}")
-    print(f"Counter matrix has {len(counter_matrix)} heroes")
+    print(f"Matchup matrix has {len(matchups)} heroes")
 
     # Filter out empty strings and None
     enemy_heroes = [h for h in enemy_heroes if h and pd.notna(h)]
@@ -88,15 +92,15 @@ def get_best_counters(enemy_heroes, cannot_draft, num_picks=2):
     # Calculate aggregate counter score for each potential pick
     hero_scores = {}
 
-    for my_hero in counter_matrix:
+    for my_hero in matchups:
         if my_hero in cannot_draft or not my_hero or pd.isna(my_hero):
             continue
 
         # Calculate average win rate against all current enemy heroes
         win_rates = []
         for enemy_hero in enemy_heroes:
-            if enemy_hero in counter_matrix.get(my_hero, {}):
-                win_rates.append(counter_matrix[my_hero][enemy_hero])
+            if enemy_hero in matchups.get(my_hero, {}):
+                win_rates.append(matchups[my_hero][enemy_hero])
 
         if win_rates:
             # Average win rate against all enemies
@@ -108,24 +112,67 @@ def get_best_counters(enemy_heroes, cannot_draft, num_picks=2):
     # Return top picks
     return [hero for hero, score in sorted_heroes[:num_picks]]
 
+def get_best_synergies(my_heroes, cannot_draft, num_picks=2):
+    """
+    Find heroes that synergize best with current team composition.
+
+    Args:
+        my_heroes: List of already-picked heroes on my team
+        cannot_draft: List of heroes that cannot be picked
+        num_picks: Number of suggestions to return
+
+    Returns:
+        List of hero names with best synergy scores
+    """
+    synergies = get_hero_synergies()
+
+    if not synergies:
+        print("Warning: No synergy data available")
+        return []
+
+    # Filter out empty heroes
+    my_heroes = [h for h in my_heroes if h and pd.notna(h)]
+
+    if not my_heroes:
+        return []
+
+    print(f"get_best_synergies called: my_heroes={my_heroes}, num_picks={num_picks}")
+
+    # Calculate aggregate synergy score
+    hero_scores = {}
+
+    for candidate_hero in synergies:
+        if candidate_hero in cannot_draft or not candidate_hero or pd.isna(candidate_hero):
+            continue
+
+        # Average synergy with existing team
+        synergy_rates = []
+        for my_hero in my_heroes:
+            if my_hero in synergies.get(candidate_hero, {}):
+                synergy_rates.append(synergies[candidate_hero][my_hero])
+
+        if synergy_rates:
+            hero_scores[candidate_hero] = sum(synergy_rates) / len(synergy_rates)
+
+    # Sort by score (highest synergy first)
+    sorted_heroes = sorted(hero_scores.items(), key=lambda x: x[1], reverse=True)
+
+    return [hero for hero, score in sorted_heroes[:num_picks]]
+
 def first_picks():
+    """Get most common first picks from dataset (optimized)"""
     dataset = get_dataset()
 
-    first_picked_col_all = []
-    for index, row in dataset.iterrows():
-        if row['is_first'] == 1:
-            val = row['main1']
-            first_picked_col_all.append(val)
-        else:
-            val = row['enemy1']
-            first_picked_col_all.append(val)
+    # Vectorized approach
+    is_main_first = dataset['is_first'] == 1
 
-    dataset_copy = dataset.copy()
-    dataset_copy['first_picked'] = first_picked_col_all
+    # Create series of first picks
+    first_picked = pd.Series(index=dataset.index, dtype=str)
+    first_picked[is_main_first] = dataset.loc[is_main_first, 'main1']
+    first_picked[~is_main_first] = dataset.loc[~is_main_first, 'enemy1']
 
-    recommended_fp = []
-    for i in range(40):
-        recommended_fp.append(dataset_copy['first_picked'].value_counts().index[i])
+    # Get top 40 most common
+    recommended_fp = first_picked.value_counts().head(40).index.tolist()
 
     return recommended_fp
 
@@ -230,11 +277,26 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         if result:
             return result
 
-        # Fallback: use counter-pick system
-        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
-        if counters:
-            print(f"Using counter-picks for m3/m4 against {enemy_heroes}: {counters}")
-            return counters
+        # Fallback: use hybrid counter-pick + synergy system
+        my_heroes = [m1, m2]
+
+        # Get counter suggestions
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=3)
+        # Get synergy suggestions
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=3)
+
+        # Combine: prioritize counters, add synergies as backup
+        combined = []
+        for hero in counters:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in synergies:
+            if hero not in combined and len(combined) < 2:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using combined counter+synergy picks for m3/m4: {combined[:2]}")
+            return combined[:2]
 
         return []
 
@@ -271,15 +333,29 @@ def draft_response(e1, m1, e2, m2, e3, m3,
             if result:
                 return result
 
-        # Fallback: use counter-pick system against all known enemies
-        print(f"Calling get_best_counters with enemies={enemy_heroes}, cannot_draft has {len(cannot_draft)} items")
-        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=1)
-        print(f"Counter result: {counters}")
-        if counters:
-            print(f"Using counter-picks for m5 against {enemy_heroes}: {counters}")
-            return counters
+        # Fallback: use hybrid counter-pick + synergy system
+        my_heroes = [m1, m2, m3, m4]
 
-        print("No counters found, returning empty list")
+        print(f"Calling get_best_counters with enemies={enemy_heroes}, cannot_draft has {len(cannot_draft)} items")
+        # Prioritize counters for last pick, use synergies as tiebreaker
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Merge lists: prioritize counters
+        combined = []
+        for hero in counters:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in synergies:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        print(f"Counter+synergy result for m5: {combined}")
+        if combined:
+            print(f"Using combined counter+synergy pick for m5: {combined[0]}")
+            return [combined[0]]
+
+        print("No counters or synergies found, returning empty list")
         return []
 
     # ========== MAIN HAS FIRST PICK ==========
@@ -308,11 +384,26 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         if result:
             return result
 
-        # Fallback: use counter-pick system
-        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
-        if counters:
-            print(f"Using counter-picks for m2/m3 against {enemy_heroes}: {counters}")
-            return counters
+        # Fallback: use hybrid counter-pick + synergy system
+        my_heroes = [m1]
+
+        # Get counter suggestions
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=3)
+        # Get synergy suggestions
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=3)
+
+        # Combine: prioritize counters, add synergies as backup
+        combined = []
+        for hero in counters:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in synergies:
+            if hero not in combined and len(combined) < 2:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using combined counter+synergy picks for m2/m3: {combined[:2]}")
+            return combined[:2]
 
         return []
 
@@ -340,11 +431,26 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         if result:
             return result
 
-        # Fallback: use counter-pick system
-        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
-        if counters:
-            print(f"Using counter-picks for m4/m5 against {enemy_heroes}: {counters}")
-            return counters
+        # Fallback: use hybrid counter-pick + synergy system
+        my_heroes = [m1, m2, m3]
+
+        # Get counter suggestions
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=3)
+        # Get synergy suggestions
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=3)
+
+        # Combine: prioritize counters, add synergies as backup
+        combined = []
+        for hero in counters:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in synergies:
+            if hero not in combined and len(combined) < 2:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using combined counter+synergy picks for m4/m5: {combined[:2]}")
+            return combined[:2]
 
         return []
 

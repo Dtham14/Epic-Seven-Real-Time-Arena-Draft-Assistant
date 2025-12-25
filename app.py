@@ -14,6 +14,20 @@ with open('e7_data/herocodes.json', 'r') as f:
 
 print(f"Loaded {len(name_to_code)} hero mappings. Boss Arunka -> {name_to_code.get('Boss Arunka', 'NOT FOUND')}", flush=True)
 
+# PRE-LOAD STATISTICS AT STARTUP
+print("Pre-loading draft statistics...", flush=True)
+from draft_logic import get_hero_matchups, get_hero_synergies
+
+matchups = get_hero_matchups()  # Triggers pickle load + cache
+synergies = get_hero_synergies()  # Triggers pickle load + cache
+
+if matchups and synergies:
+    print(f"Loaded matchup data for {len(matchups)} heroes", flush=True)
+    print(f"Loaded synergy data for {len(synergies)} heroes", flush=True)
+else:
+    print("WARNING: Statistics files not found! Run build_statistics.py first.", flush=True)
+    print("Application will run but recommendations will be limited.", flush=True)
+
 @app.route('/test')
 def test_route():
     test_names = ['Boss Arunka', 'Frieren']
