@@ -238,6 +238,144 @@ body::before {
 }
 
 /* ========================================
+   INSTRUCTIONS SECTION
+   ======================================== */
+.instructions-section {
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.12), rgba(138, 43, 226, 0.08));
+    border: 2px solid rgba(74, 158, 255, 0.4);
+    border-left: 4px solid var(--player-blue);
+    border-radius: 8px;
+    margin: 0 auto 30px;
+    max-width: 900px;
+    box-shadow:
+        0 4px 15px rgba(74, 158, 255, 0.2),
+        inset 0 0 20px rgba(74, 158, 255, 0.05);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.instructions-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.instructions-toggle:hover {
+    background: rgba(74, 158, 255, 0.1);
+}
+
+.toggle-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.toggle-text {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-bright);
+    letter-spacing: 1px;
+    flex-grow: 1;
+}
+
+.toggle-arrow {
+    font-size: 14px;
+    color: var(--player-blue);
+    transition: transform 0.3s ease;
+}
+
+.instructions-section[open] .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.instructions-content {
+    padding: 0 20px 20px;
+    color: #ffffff;
+}
+
+.instruction-steps {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(10, 14, 39, 0.4);
+    border-radius: 6px;
+    border-left: 3px solid var(--player-blue);
+    transition: all 0.3s ease;
+}
+
+.step:hover {
+    background: rgba(10, 14, 39, 0.6);
+    border-left-color: var(--gold-bright);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--player-blue), rgba(74, 158, 255, 0.7));
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(74, 158, 255, 0.4);
+}
+
+.step-content {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    padding-top: 3px;
+}
+
+.step-content strong {
+    color: var(--gold-bright);
+    font-weight: 600;
+}
+
+.how-it-works {
+    padding: 15px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.how-it-works strong {
+    color: var(--gold-bright);
+    font-weight: 600;
+}
+
+.feature-tag {
+    display: inline-block;
+    margin: 5px 5px 0 0;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.3), rgba(138, 43, 226, 0.2));
+    border: 1px solid rgba(74, 158, 255, 0.5);
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--player-blue);
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
    BATTLEFIELD LAYOUT
    ======================================== */
 .arena-battlefield {
