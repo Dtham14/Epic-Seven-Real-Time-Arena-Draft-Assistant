@@ -6,13 +6,16 @@
    - Select 2 heroes you want to pre-ban (My Pre-bans)
    - Select 2 heroes the enemy pre-banned (Enemy Pre-bans)
 
-2. **Draft Phase**
-   - Click on enemy picks as they happen (Enemy Pick 1-5)
-   - Click on your picks as you make them (My Pick 1-5)
-   - **Get AI Recommendations**: Click "Update Draft" after each enemy pick
-   - **View Suggestions**: The system shows 1-2 hero recommendations
+2. **First Pick** (Important!)
+   - **If YOU go first:** Pick your hero (My Pick 1), then click "UPDATE DRAFT" to get defensive follow-up suggestions
+   - **If ENEMY goes first:** Select enemy's first pick (Enemy Pick 1), then click "UPDATE DRAFT" to get counter-pick suggestions
 
-3. **Win Prediction**
+3. **Continue Draft Phase**
+   - Select heroes as they're picked during the draft
+   - Click "UPDATE DRAFT" after enemy picks to get 1-2 AI recommendations
+   - The system automatically detects who has first pick based on your selections
+
+4. **Win Prediction**
    - After all 10 heroes are picked, click "Calculate Win Chance"
    - Shows predicted win probability based on team compositions
 
