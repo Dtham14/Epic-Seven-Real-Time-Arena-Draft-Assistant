@@ -16,14 +16,16 @@ print(f"Loaded {len(name_to_code)} hero mappings. Boss Arunka -> {name_to_code.g
 
 # PRE-LOAD STATISTICS AT STARTUP
 print("Pre-loading draft statistics...", flush=True)
-from draft_logic import get_hero_matchups, get_hero_synergies
+from draft_logic import get_hero_matchups, get_hero_synergies, get_draft_patterns
 
 matchups = get_hero_matchups()  # Triggers pickle load + cache
 synergies = get_hero_synergies()  # Triggers pickle load + cache
+patterns = get_draft_patterns()  # Triggers pickle load + cache
 
-if matchups and synergies:
+if matchups and synergies and patterns:
     print(f"Loaded matchup data for {len(matchups)} heroes", flush=True)
     print(f"Loaded synergy data for {len(synergies)} heroes", flush=True)
+    print(f"Loaded draft patterns: {len(patterns)} pattern types", flush=True)
 else:
     print("WARNING: Statistics files not found! Run build_statistics.py first.", flush=True)
     print("Application will run but recommendations will be limited.", flush=True)

@@ -6,12 +6,14 @@ CLAUDE.md
 e7_data/hero_winrates.pkl
 e7_data/hero_pickrates.pkl
 e7_data/hero_matchups.pkl
+e7_data/draft_patterns.pkl
 e7_data/hero_synergies.pkl
 
 # Optional: Keep JSON files for human inspection
 # e7_data/hero_winrates.json
 # e7_data/hero_pickrates.json
 # e7_data/hero_matchups.json
+# e7_data/draft_patterns.json
 # e7_data/hero_synergies.json
 
 # Python

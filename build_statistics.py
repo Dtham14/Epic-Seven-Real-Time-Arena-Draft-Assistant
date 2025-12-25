@@ -144,12 +144,79 @@ def compute_hero_matchups(df):
     print(f"  Computed {len(result)} heroes with matchup data")
     return result
 
+def compute_historical_patterns(df):
+    """
+    Pre-compute common draft patterns for instant lookups.
+    Returns: dict with pattern lookups for different draft stages
+    """
+    print("\n[4/5] Computing historical draft patterns...")
+
+    patterns = {}
+
+    # Enemy first pick patterns (is_first=0)
+    print("  Computing enemy-first-pick patterns...")
+
+    # Pattern 1: m1m2 after e1
+    # Group by e1, get top m1,m2 combinations
+    enemy_first = df[df['is_first'] == 0].copy()
+    pattern_m1m2 = enemy_first.groupby('enemy1').apply(
+        lambda g: g[['main1', 'main2']].value_counts().head(10).index.tolist()
+    ).to_dict()
+    patterns['enemy_m1m2'] = pattern_m1m2
+
+    # Pattern 2: m3m4 after e1,e2,e3
+    # Group by (e2, e3), get top m3,m4 combinations
+    pattern_m3m4_raw = enemy_first.groupby(['enemy2', 'enemy3']).apply(
+        lambda g: g[['main3', 'main4']].value_counts().head(10).index.tolist()
+    ).to_dict()
+    # Convert tuple keys to strings for JSON serialization
+    pattern_m3m4 = {f"{k[0]}|{k[1]}": v for k, v in pattern_m3m4_raw.items()}
+    patterns['enemy_m3m4'] = pattern_m3m4
+
+    # Pattern 3: m5 after e1,e2,e3,e4,e5
+    # Group by (e4, e5), get top m5 picks
+    pattern_m5_raw = enemy_first.groupby(['enemy4', 'enemy5']).apply(
+        lambda g: g['main5'].value_counts().head(10).index.tolist()
+    ).to_dict()
+    # Convert tuple keys to strings for JSON serialization
+    pattern_m5 = {f"{k[0]}|{k[1]}": v for k, v in pattern_m5_raw.items()}
+    patterns['enemy_m5'] = pattern_m5
+
+    # Main first pick patterns (is_first=1)
+    print("  Computing main-first-pick patterns...")
+
+    main_first = df[df['is_first'] == 1].copy()
+
+    # Pattern 4: m2m3 after m1,e1,e2
+    # Group by (e1, e2), get top m2,m3 combinations
+    pattern_m2m3_raw = main_first.groupby(['enemy1', 'enemy2']).apply(
+        lambda g: g[['main2', 'main3']].value_counts().head(10).index.tolist()
+    ).to_dict()
+    # Convert tuple keys to strings for JSON serialization
+    pattern_m2m3 = {f"{k[0]}|{k[1]}": v for k, v in pattern_m2m3_raw.items()}
+    patterns['main_m2m3'] = pattern_m2m3
+
+    # Pattern 5: m4m5 after m1,e1,e2,m2,m3,e3,e4
+    # Group by (e3, e4), get top m4,m5 combinations
+    pattern_m4m5_raw = main_first.groupby(['enemy3', 'enemy4']).apply(
+        lambda g: g[['main4', 'main5']].value_counts().head(10).index.tolist()
+    ).to_dict()
+    # Convert tuple keys to strings for JSON serialization
+    pattern_m4m5 = {f"{k[0]}|{k[1]}": v for k, v in pattern_m4m5_raw.items()}
+    patterns['main_m4m5'] = pattern_m4m5
+
+    # Count total patterns
+    total_patterns = sum(len(p) for p in patterns.values())
+    print(f"  Computed {total_patterns} total pattern lookups")
+
+    return patterns
+
 def compute_hero_synergies(df):
     """
     Compute synergy matrix: winrate when hero_1 and hero_2 are on same team.
     Returns: nested dict {hero_1: {hero_2: winrate}}
     """
-    print("\n[4/4] Computing hero synergies (NEW)...")
+    print("\n[5/5] Computing hero synergies (NEW)...")
 
     # Unpivot main team heroes
     main_heroes = pd.melt(
@@ -228,6 +295,7 @@ def main():
     winrates = compute_hero_winrates(df)
     pickrates = compute_hero_pickrates(df)
     matchups = compute_hero_matchups(df)
+    patterns = compute_historical_patterns(df)
     synergies = compute_hero_synergies(df)
 
     # Save all results
@@ -238,6 +306,7 @@ def main():
     save_statistics(winrates, "hero_winrates")
     save_statistics(pickrates, "hero_pickrates")
     save_statistics(matchups, "hero_matchups")
+    save_statistics(patterns, "draft_patterns")
     save_statistics(synergies, "hero_synergies")
 
     print("\n" + "="*60)
@@ -247,6 +316,7 @@ def main():
     print(f"  - {DATA_DIR}/hero_winrates.json / .pkl")
     print(f"  - {DATA_DIR}/hero_pickrates.json / .pkl")
     print(f"  - {DATA_DIR}/hero_matchups.json / .pkl")
+    print(f"  - {DATA_DIR}/draft_patterns.json / .pkl (NEW)")
     print(f"  - {DATA_DIR}/hero_synergies.json / .pkl")
     print("\nYou can now run the Flask app with pre-computed statistics.")
 

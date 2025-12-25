@@ -2,6 +2,8 @@ import pandas as pd
 from collections import defaultdict
 import pickle
 from pathlib import Path
+import os
+from functools import lru_cache
 
 # Cache for dataset and counter matrix
 _dataset_cache = None
@@ -12,13 +14,15 @@ _hero_winrates = None
 _hero_pickrates = None
 _hero_matchups = None
 _hero_synergies = None
+_draft_patterns = None
 
-DATA_DIR = Path("e7_data")
+# Use absolute path relative to this file's location
+DATA_DIR = Path(__file__).parent / "e7_data"
 
 def get_dataset():
     global _dataset_cache
     if _dataset_cache is None:
-        file_path = "e7_data/drafts_dataset.csv"
+        file_path = DATA_DIR / "drafts_dataset.csv"
         _dataset_cache = pd.read_csv(file_path)
     return _dataset_cache
 
@@ -27,9 +31,16 @@ def load_pickle_stats(filename):
     pkl_path = DATA_DIR / f"{filename}.pkl"
     try:
         with open(pkl_path, 'rb') as f:
-            return pickle.load(f)
+            data = pickle.load(f)
+            print(f"Successfully loaded {filename}.pkl ({len(data)} entries)", flush=True)
+            return data
     except FileNotFoundError:
-        print(f"Warning: {pkl_path} not found. Run build_statistics.py first.")
+        print(f"ERROR: {pkl_path} not found. Run build_statistics.py first.", flush=True)
+        print(f"  Current working directory: {os.getcwd()}", flush=True)
+        print(f"  Expected path: {pkl_path.absolute()}", flush=True)
+        return None
+    except Exception as e:
+        print(f"ERROR loading {filename}.pkl: {e}", flush=True)
         return None
 
 def get_hero_winrates():
@@ -59,6 +70,63 @@ def get_hero_synergies():
     if _hero_synergies is None:
         _hero_synergies = load_pickle_stats("hero_synergies") or {}
     return _hero_synergies
+
+def get_draft_patterns():
+    """Load pre-computed draft patterns (cached)"""
+    global _draft_patterns
+    if _draft_patterns is None:
+        _draft_patterns = load_pickle_stats("draft_patterns") or {}
+    return _draft_patterns
+
+def get_pattern_recommendations(pattern_key, lookup_key, cannot_draft, num_picks=2):
+    """
+    Get recommendations from pre-computed patterns.
+
+    Args:
+        pattern_key: Pattern type (e.g., 'enemy_m1m2', 'main_m4m5')
+        lookup_key: Lookup value (e.g., 'Belian' or ('Rinak', 'Empyrean Ilynav'))
+        cannot_draft: List of heroes that cannot be picked
+        num_picks: Number of suggestions to return
+
+    Returns:
+        List of recommended hero names, or empty list if no pattern found
+    """
+    patterns = get_draft_patterns()
+
+    if not patterns or pattern_key not in patterns:
+        return []
+
+    pattern_dict = patterns[pattern_key]
+
+    # Convert tuple lookup_key to string format "hero1|hero2" for JSON compatibility
+    if isinstance(lookup_key, tuple):
+        lookup_key = "|".join(lookup_key)
+
+    # Get the pattern list for this lookup key
+    if lookup_key not in pattern_dict:
+        return []
+
+    pattern_list = pattern_dict[lookup_key]
+
+    # Filter out banned heroes and flatten tuples
+    recommendations = []
+    for item in pattern_list:
+        # item might be a tuple (e.g., ('Lua', 'Aramintha')) or a single hero
+        if isinstance(item, tuple):
+            # It's a combination like ('Lua', 'Aramintha')
+            heroes = [h for h in item if h and pd.notna(h) and h not in cannot_draft]
+            if len(heroes) >= num_picks:
+                recommendations.extend(heroes[:num_picks])
+                if len(recommendations) >= num_picks:
+                    break
+        else:
+            # It's a single hero
+            if item and pd.notna(item) and item not in cannot_draft:
+                recommendations.append(item)
+                if len(recommendations) >= num_picks:
+                    break
+
+    return recommendations[:num_picks]
 
 def get_best_counters(enemy_heroes, cannot_draft, num_picks=2):
     """
@@ -238,12 +306,10 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         cannot_draft.append(e1)
         enemy_heroes = [e1]
 
-        for index, row in dataset.iterrows():
-            if row['is_first'] == 0 and row['enemy1'] == e1:
-                response.append([row['main1'], row['main2']])
-
-        result = get_suggestions_from_response(response, cannot_draft, num_picks=2)
+        # Try pre-computed patterns first (FAST)
+        result = get_pattern_recommendations('enemy_m1m2', e1, cannot_draft, num_picks=2)
         if result:
+            print(f"Using pre-computed pattern for m1/m2 after {e1}: {result}")
             return result
 
         # Fallback: use counter-pick system
@@ -259,22 +325,10 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         cannot_draft.extend([e1, e2, e3, m1, m2])
         enemy_heroes = [e1, e2, e3]
 
-        for index, row in dataset.iterrows():
-            if row['is_first'] == 0 and row['enemy2'] == e2 and row['enemy3'] == e3:
-                response.append([row['main3'], row['main4']])
-
-        result = get_suggestions_from_response(response, cannot_draft)
+        # Try pre-computed patterns first (FAST)
+        result = get_pattern_recommendations('enemy_m3m4', (e2, e3), cannot_draft, num_picks=2)
         if result:
-            return result
-
-        # Try partial match
-        response = []
-        for index, row in dataset.iterrows():
-            if row['is_first'] == 0 and (row['enemy2'] == e2 or row['enemy3'] == e3):
-                response.append([row['main3'], row['main4']])
-
-        result = get_suggestions_from_response(response, cannot_draft)
-        if result:
+            print(f"Using pre-computed pattern for m3/m4 after {e2}, {e3}: {result}")
             return result
 
         # Fallback: use hybrid counter-pick + synergy system
@@ -313,24 +367,11 @@ def draft_response(e1, m1, e2, m2, e3, m3,
             counters = get_best_counters(['Boss Arunka'], cannot_draft, num_picks=1)  # Use popular hero as baseline
             return counters if counters else []
 
-        # Try exact match first (e4 AND e5) if both are filled
+        # Try pre-computed pattern first (FAST) if e4 and e5 are filled
         if e4 != "" and e5 != "":
-            for index, row in dataset.iterrows():
-                if row['is_first'] == 0 and row['enemy4'] == e4 and row['enemy5'] == e5:
-                    response.append([row['main5']])
-
-            result = get_suggestions_from_response(response, cannot_draft, num_picks=1)
+            result = get_pattern_recommendations('enemy_m5', (e4, e5), cannot_draft, num_picks=1)
             if result:
-                return result
-
-            # Try partial match (e4 OR e5)
-            response = []
-            for index, row in dataset.iterrows():
-                if row['is_first'] == 0 and (row['enemy4'] == e4 or row['enemy5'] == e5):
-                    response.append([row['main5']])
-
-            result = get_suggestions_from_response(response, cannot_draft, num_picks=1)
-            if result:
+                print(f"Using pre-computed pattern for m5 after {e4}, {e5}: {result}")
                 return result
 
         # Fallback: use hybrid counter-pick + synergy system
@@ -366,22 +407,10 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         cannot_draft.extend([m1, e1, e2])
         enemy_heroes = [e1, e2]
 
-        # Try exact match first
-        for index, row in dataset.iterrows():
-            if row['is_first'] == 1 and row['enemy1'] == e1 and row['enemy2'] == e2:
-                response.append([row['main2'], row['main3']])
-
-        result = get_suggestions_from_response(response, cannot_draft)
+        # Try pre-computed pattern first (FAST)
+        result = get_pattern_recommendations('main_m2m3', (e1, e2), cannot_draft, num_picks=2)
         if result:
-            return result
-
-        # Try with is_first = 0 as well (similar patterns)
-        for index, row in dataset.iterrows():
-            if row['enemy1'] == e1 and row['enemy2'] == e2:
-                response.append([row['main2'], row['main3']])
-
-        result = get_suggestions_from_response(response, cannot_draft)
-        if result:
+            print(f"Using pre-computed pattern for m2/m3 after {e1}, {e2}: {result}")
             return result
 
         # Fallback: use hybrid counter-pick + synergy system
@@ -412,23 +441,10 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         cannot_draft.extend([m1, e1, e2, m2, m3, e3, e4])
         enemy_heroes = [e1, e2, e3, e4]
 
-        # Try exact match first (e3 AND e4)
-        for index, row in dataset.iterrows():
-            if row['is_first'] == 1 and row['enemy3'] == e3 and row['enemy4'] == e4:
-                response.append([row['main4'], row['main5']])
-
-        result = get_suggestions_from_response(response, cannot_draft)
+        # Try pre-computed pattern first (FAST)
+        result = get_pattern_recommendations('main_m4m5', (e3, e4), cannot_draft, num_picks=2)
         if result:
-            return result
-
-        # Try partial match (e3 OR e4)
-        response = []
-        for index, row in dataset.iterrows():
-            if row['enemy3'] == e3 or row['enemy4'] == e4:
-                response.append([row['main4'], row['main5']])
-
-        result = get_suggestions_from_response(response, cannot_draft)
-        if result:
+            print(f"Using pre-computed pattern for m4/m5 after {e3}, {e4}: {result}")
             return result
 
         # Fallback: use hybrid counter-pick + synergy system
