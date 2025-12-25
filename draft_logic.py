@@ -30,6 +30,15 @@ def load_pickle_stats(filename):
     """Load pre-computed statistics from pickle file"""
     pkl_path = DATA_DIR / f"{filename}.pkl"
     try:
+        # Check if file exists first
+        if not pkl_path.exists():
+            print(f"ERROR: {pkl_path} does not exist!", flush=True)
+            print(f"  Current working directory: {os.getcwd()}", flush=True)
+            print(f"  Script directory: {Path(__file__).parent}", flush=True)
+            print(f"  Expected path: {pkl_path.absolute()}", flush=True)
+            print(f"  File exists check: {pkl_path.exists()}", flush=True)
+            return {}
+
         with open(pkl_path, 'rb') as f:
             data = pickle.load(f)
             print(f"Successfully loaded {filename}.pkl ({len(data)} entries)", flush=True)
@@ -38,10 +47,12 @@ def load_pickle_stats(filename):
         print(f"ERROR: {pkl_path} not found. Run build_statistics.py first.", flush=True)
         print(f"  Current working directory: {os.getcwd()}", flush=True)
         print(f"  Expected path: {pkl_path.absolute()}", flush=True)
-        return None
+        return {}
     except Exception as e:
         print(f"ERROR loading {filename}.pkl: {e}", flush=True)
-        return None
+        import traceback
+        traceback.print_exc()
+        return {}
 
 def get_hero_winrates():
     """Load overall hero winrates (cached)"""
@@ -143,10 +154,20 @@ def get_best_counters(enemy_heroes, cannot_draft, num_picks=2):
     matchups = get_hero_matchups()
 
     if not matchups:
-        print("Warning: No matchup data available")
-        return []
+        print("Warning: No matchup data available", flush=True)
+        print(f"  Matchups dict type: {type(matchups)}, len: {len(matchups) if matchups else 'None'}", flush=True)
+        print(f"  Attempting to reload matchups...", flush=True)
+        # Try to force reload
+        global _hero_matchups
+        _hero_matchups = None
+        matchups = get_hero_matchups()
+        if not matchups:
+            print(f"  Reload failed. Matchups still empty.", flush=True)
+            return []
+        else:
+            print(f"  Reload successful! Got {len(matchups)} heroes", flush=True)
 
-    print(f"get_best_counters called: enemy_heroes={enemy_heroes}, num_picks={num_picks}")
+    print(f"get_best_counters called: enemy_heroes={enemy_heroes}, num_picks={num_picks}", flush=True)
     print(f"Matchup matrix has {len(matchups)} heroes")
 
     # Filter out empty strings and None
@@ -195,8 +216,20 @@ def get_best_synergies(my_heroes, cannot_draft, num_picks=2):
     synergies = get_hero_synergies()
 
     if not synergies:
-        print("Warning: No synergy data available")
-        return []
+        print("Warning: No synergy data available", flush=True)
+        print(f"  Synergies dict type: {type(synergies)}, len: {len(synergies) if synergies else 'None'}", flush=True)
+        print(f"  Attempting to reload synergies...", flush=True)
+        # Try to force reload
+        global _hero_synergies
+        _hero_synergies = None
+        synergies = get_hero_synergies()
+        if not synergies:
+            print(f"  Reload failed. Synergies still empty.", flush=True)
+            return []
+        else:
+            print(f"  Reload successful! Got {len(synergies)} heroes", flush=True)
+
+    print(f"get_best_synergies called: my_heroes={my_heroes}, num_picks={num_picks}", flush=True)
 
     # Filter out empty heroes
     my_heroes = [h for h in my_heroes if h and pd.notna(h)]
@@ -275,7 +308,14 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         return data_singles[:num_picks] if data_singles else None
 
     # Debug: print what we received
-    print(f"Draft input: e1={e1}, m1={m1}, e2={e2}, m2={m2}, e3={e3}, m3={m3}, e4={e4}, m4={m4}, e5={e5}, m5={m5}")
+    print(f"Draft input: e1={e1}, m1={m1}, e2={e2}, m2={m2}, e3={e3}, m3={m3}, e4={e4}, m4={m4}, e5={e5}, m5={m5}", flush=True)
+
+    # Check if draft is complete (all 10 picks made)
+    all_picks = [e1, m1, e2, m2, e3, m3, e4, m4, e5, m5]
+    filled_picks = [p for p in all_picks if p and pd.notna(p)]
+    if len(filled_picks) == 10:
+        print("Draft is complete - all picks made", flush=True)
+        return []
 
     # Determine who has first pick based on what's filled in
     # If m1 is filled but e1 is empty, or m1 is filled first -> main has first pick
@@ -480,14 +520,18 @@ def draft_response(e1, m1, e2, m2, e3, m3,
 
     # m2, m3 needed (after m1 -> e1,e2)
     if m1 != "" and m2 == "" and m3 == "" and e1 != "" and e2 != "":
+        print(f"Matched main-first m2/m3 condition: m1={m1}, e1={e1}, e2={e2}", flush=True)
         cannot_draft.extend([m1, e1, e2])
         enemy_heroes = [e1, e2]
 
         # Try pre-computed pattern first (FAST)
+        print(f"Looking for pattern 'main_m2m3' with key ({e1}, {e2})", flush=True)
         result = get_pattern_recommendations('main_m2m3', (e1, e2), cannot_draft, num_picks=2)
         if result:
-            print(f"Using pre-computed pattern for m2/m3 after {e1}, {e2}: {result}")
+            print(f"Using pre-computed pattern for m2/m3 after {e1}, {e2}: {result}", flush=True)
             return result
+        else:
+            print(f"No pattern found, falling back to counter+synergy", flush=True)
 
         # Fallback: use hybrid counter-pick + synergy system
         my_heroes = [m1]
