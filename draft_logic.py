@@ -320,6 +320,31 @@ def draft_response(e1, m1, e2, m2, e3, m3,
 
         return []
 
+    # m2 only needed (m1 filled, enemy responded with e2)
+    if enemy_has_first_pick and m1 != "" and m2 == "" and e2 != "":
+        cannot_draft.extend([e1, m1, e2])
+        enemy_heroes = [e1, e2]
+        my_heroes = [m1]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: prioritize synergies with m1, then counters
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m2 (complement {m1}): {combined[:1]}")
+            return combined[:1]
+
+        return []
+
     # m3, m4 needed (after e1 -> m1,m2 -> e2,e3)
     if m1 != "" and m2 != "" and m3 == "" and m4 == "" and e2 != "" and e3 != "":
         cannot_draft.extend([e1, e2, e3, m1, m2])
@@ -351,6 +376,57 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         if combined:
             print(f"Using combined counter+synergy picks for m3/m4: {combined[:2]}")
             return combined[:2]
+
+        return []
+
+    # m3 only needed (m1,m2 filled, enemy responded with e3)
+    if m1 != "" and m2 != "" and m3 == "" and e2 != "" and e3 != "":
+        cannot_draft.extend([e1, e2, e3, m1, m2])
+        enemy_heroes = [e1, e2, e3]
+        my_heroes = [m1, m2]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: balance synergies with team and counters to enemies
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m3: {combined[:1]}")
+            return combined[:1]
+
+        return []
+
+    # m4 only needed (m1,m2,m3 filled, enemy responded with e4)
+    if m1 != "" and m2 != "" and m3 != "" and m4 == "" and e4 != "":
+        all_picked = [e1, e2, e3, e4, m1, m2, m3]
+        cannot_draft.extend([h for h in all_picked if h])
+        enemy_heroes = [h for h in [e1, e2, e3, e4] if h]
+        my_heroes = [m1, m2, m3]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: balance synergies with team and counters to enemies
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m4: {combined[:1]}")
+            return combined[:1]
 
         return []
 
@@ -436,6 +512,56 @@ def draft_response(e1, m1, e2, m2, e3, m3,
 
         return []
 
+    # m2 only needed (main-first: after m1 -> e1,e2, need m2)
+    if m1 != "" and m2 == "" and e1 != "" and e2 != "":
+        cannot_draft.extend([m1, e1, e2])
+        enemy_heroes = [e1, e2]
+        my_heroes = [m1]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: prioritize synergies with m1, then counters
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m2 (main-first, complement {m1}): {combined[:1]}")
+            return combined[:1]
+
+        return []
+
+    # m3 only needed (main-first: after m1 -> e1,e2 -> m2, need m3)
+    if m1 != "" and m2 != "" and m3 == "" and e1 != "" and e2 != "":
+        cannot_draft.extend([m1, m2, e1, e2])
+        enemy_heroes = [e1, e2]
+        my_heroes = [m1, m2]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: balance synergies with team and counters to enemies
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m3 (main-first): {combined[:1]}")
+            return combined[:1]
+
+        return []
+
     # m4, m5 needed (after m1 -> e1,e2 -> m2,m3 -> e3,e4)
     if m1 != "" and m2 != "" and m3 != "" and m4 == "" and m5 == "" and e3 != "" and e4 != "":
         cannot_draft.extend([m1, e1, e2, m2, m3, e3, e4])
@@ -467,6 +593,59 @@ def draft_response(e1, m1, e2, m2, e3, m3,
         if combined:
             print(f"Using combined counter+synergy picks for m4/m5: {combined[:2]}")
             return combined[:2]
+
+        return []
+
+    # m4 only needed (main-first: after m1,e1,e2,m2,m3,e3,e4)
+    if m1 != "" and m2 != "" and m3 != "" and m4 == "" and e3 != "" and e4 != "":
+        cannot_draft.extend([m1, m2, m3, e1, e2, e3, e4])
+        enemy_heroes = [e1, e2, e3, e4]
+        my_heroes = [m1, m2, m3]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: balance synergies with team and counters to enemies
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m4 (main-first): {combined[:1]}")
+            return combined[:1]
+
+        return []
+
+    # m5 only needed (main-first: after m1,e1,e2,m2,m3,e3,e4,m4)
+    if m1 != "" and m2 != "" and m3 != "" and m4 != "" and m5 == "" and e4 != "":
+        all_picked = [m1, m2, m3, m4, e1, e2, e3, e4]
+        if e5:
+            all_picked.append(e5)
+        cannot_draft.extend([h for h in all_picked if h])
+        enemy_heroes = [h for h in [e1, e2, e3, e4, e5] if h]
+        my_heroes = [m1, m2, m3, m4]
+
+        # Use hybrid counter-pick + synergy
+        counters = get_best_counters(enemy_heroes, cannot_draft, num_picks=2)
+        synergies = get_best_synergies(my_heroes, cannot_draft, num_picks=2)
+
+        # Combine: prioritize synergies with team, then counters
+        combined = []
+        for hero in synergies:
+            if hero not in combined:
+                combined.append(hero)
+        for hero in counters:
+            if hero not in combined and len(combined) < 1:
+                combined.append(hero)
+
+        if combined:
+            print(f"Using synergy+counter pick for m5 (main-first): {combined[:1]}")
+            return combined[:1]
 
         return []
 
