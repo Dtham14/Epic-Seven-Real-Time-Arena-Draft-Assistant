@@ -444,9 +444,9 @@ def draft_response(e1, m1, e2, m2, e3, m3,
 
         return []
 
-    # m4 only needed (m1,m2,m3 filled, enemy responded with e4)
-    if m1 != "" and m2 != "" and m3 != "" and m4 == "" and e4 != "":
-        all_picked = [e1, e2, e3, e4, m1, m2, m3]
+    # m4 only needed (m1,m2,m3 filled, m5 filled, enemy responded with e4, need m4)
+    if m1 != "" and m2 != "" and m3 != "" and m4 == "" and m5 != "" and e4 != "":
+        all_picked = [e1, e2, e3, e4, m1, m2, m3, m5]
         cannot_draft.extend([h for h in all_picked if h])
         enemy_heroes = [h for h in [e1, e2, e3, e4] if h]
         my_heroes = [m1, m2, m3]
@@ -640,9 +640,9 @@ def draft_response(e1, m1, e2, m2, e3, m3,
 
         return []
 
-    # m4 only needed (main-first: after m1,e1,e2,m2,m3,e3,e4)
-    if m1 != "" and m2 != "" and m3 != "" and m4 == "" and e3 != "" and e4 != "":
-        cannot_draft.extend([m1, m2, m3, e1, e2, e3, e4])
+    # m4 only needed (main-first: after m1,e1,e2,m2,m3,e3,e4,m4 empty, m5 filled)
+    if m1 != "" and m2 != "" and m3 != "" and m4 == "" and m5 != "" and e3 != "" and e4 != "":
+        cannot_draft.extend([m1, m2, m3, m5, e1, e2, e3, e4])
         enemy_heroes = [e1, e2, e3, e4]
         my_heroes = [m1, m2, m3]
 
