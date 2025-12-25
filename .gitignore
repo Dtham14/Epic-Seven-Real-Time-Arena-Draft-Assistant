@@ -2,19 +2,15 @@
 .claude
 CLAUDE.md
 
-# Pre-computed statistics (regenerate with build_statistics.py)
-e7_data/hero_winrates.pkl
-e7_data/hero_pickrates.pkl
-e7_data/hero_matchups.pkl
-e7_data/draft_patterns.pkl
-e7_data/hero_synergies.pkl
+# Pre-computed statistics are now committed to git for deployment
+# They are regenerated locally with: python build_statistics.py
 
-# Optional: Keep JSON files for human inspection
-# e7_data/hero_winrates.json
-# e7_data/hero_pickrates.json
-# e7_data/hero_matchups.json
-# e7_data/draft_patterns.json
-# e7_data/hero_synergies.json
+# Optional: Exclude JSON files (human inspection only)
+e7_data/hero_winrates.json
+e7_data/hero_pickrates.json
+e7_data/hero_matchups.json
+e7_data/draft_patterns.json
+e7_data/hero_synergies.json
 
 # Python
 __pycache__/
